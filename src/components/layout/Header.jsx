@@ -60,15 +60,17 @@ function Header() {
               </li>
             ))}
           </ul>
-          <Button
-            as="a"
-            href={profile.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.resumeBtn}
-          >
-            이력서
-          </Button>
+          {profile.resumeReady && (
+            <Button
+              as="a"
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.resumeBtn}
+            >
+              이력서
+            </Button>
+          )}
         </nav>
 
         <div className={styles.controls}>

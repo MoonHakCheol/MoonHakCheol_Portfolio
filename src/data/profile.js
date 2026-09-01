@@ -10,6 +10,8 @@ export const profile = {
   email: 'gkrcjf1019@naver.com',
   phone: '010-3316-1466',
   resumeUrl: '/resume.pdf',
+  // public/resume.pdf 를 넣은 뒤 true 로 바꾸면 이력서 버튼이 나타납니다.
+  resumeReady: false,
   links: {
     github: 'https://github.com/MoonHakCheol',
     blog: '', // 나중에 추가

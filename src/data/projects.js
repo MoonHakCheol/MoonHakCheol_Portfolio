@@ -1,35 +1,36 @@
-// 프로젝트 목록 — 예시 데이터. 실제 프로젝트로 교체하세요.
-// STAR 구조(개요/기간·역할/문제해결/배운점)로 상세를 채우면 좋습니다.
+// 프로젝트 목록. 카드/상세 페이지에 함께 쓰입니다.
+// tags / links / problem / learned 는 실제 내용으로 채워 주세요 (TODO 표시).
 export const projects = [
   {
-    id: 'todo-app',
-    title: '할 일 관리 앱',
-    summary: '드래그 앤 드롭이 가능한 투두 리스트',
-    thumbnail: '', // 이미지 준비 후 '/assets/projects/todo.png' 형태로 지정
-    tags: ['React', 'CSS Modules', 'localStorage'],
+    id: 'carscope',
+    title: 'CarScope',
+    summary:
+      '차량 관련 최저가와 주변 최저가 주차장을 한곳에서 검색·비교하는 서비스',
+    thumbnail: '', // TODO: public/assets/projects/carscope.png 준비 후 경로 지정
+    tags: [], // TODO: 실제 사용 기술 입력 (예: 'React', 'Spring Boot', 'MySQL')
     links: {
-      demo: '',
-      github: '',
+      demo: '', // TODO: 배포 주소
+      github: '', // TODO: 저장소 주소
     },
-    period: '2주 / 개인',
-    role: '기획 · 디자인 · 개발 전체',
-    problem:
-      '드래그 시 불필요한 리렌더링으로 성능이 저하됨 → memo와 상태 구조 개선으로 해결.',
-    learned: '리렌더링 최적화와 컴포넌트 분리 기준을 익혔습니다.',
+    period: '2025년 2학기 · 팀 프로젝트',
+    role: '팀장 · 개발 총괄',
+    problem: '', // TODO: 겪은 문제와 해결 과정 (면접에서 가장 많이 질문받는 부분)
+    learned: '', // TODO: 배운 점 / 회고
   },
   {
-    id: 'weather-app',
-    title: '날씨 대시보드',
-    summary: '위치 기반 실시간 날씨 조회 서비스',
-    thumbnail: '',
-    tags: ['React', 'REST API', 'Chart'],
+    id: 'watchman',
+    title: 'WatchMan',
+    summary:
+      '웹캠으로 사용자의 공부 상태를 감지·모니터링하여 집중 학습을 돕는 서비스',
+    thumbnail: '', // TODO: public/assets/projects/watchman.png 준비 후 경로 지정
+    tags: [], // TODO: 실제 사용 기술 입력 (예: 'React', 'WebRTC')
     links: {
-      demo: '',
-      github: '',
+      demo: '', // TODO
+      github: '', // TODO
     },
-    period: '1주 / 개인',
-    role: '기획 · 개발 전체',
-    problem: 'API 호출이 과도하게 발생 → 디바운스와 캐싱으로 요청 수를 줄임.',
-    learned: '비동기 데이터 처리와 로딩/에러 상태 관리를 연습했습니다.',
+    period: '2026년 1학기 · 팀 프로젝트',
+    role: '프론트엔드 개발',
+    problem: '', // TODO
+    learned: '', // TODO
   },
 ];

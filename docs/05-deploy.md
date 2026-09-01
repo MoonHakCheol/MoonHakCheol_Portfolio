@@ -2,8 +2,11 @@
 
 > 최종 수정: 2026-09-02
 > 저장소: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio
+> **라이브: https://mhc-portfolio-iota.vercel.app/ (배포 완료)**
 
 이 프로젝트는 **Vercel + GitHub 연동**으로 배포합니다. `main` 브랜치에 push하면 자동으로 재배포됩니다.
+
+> 최초 배포는 완료된 상태입니다. 아래 절차는 재설정하거나 처음부터 다시 연결할 때 참고하세요.
 
 ---
 

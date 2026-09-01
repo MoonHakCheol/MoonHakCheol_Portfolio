@@ -128,10 +128,20 @@ export default ProjectCard;
 
 ## 4. Git 컨벤션
 
-### 브랜치
-- `main`: 배포 가능한 안정 상태
-- `feat/<기능명>`: 기능 개발 (예: `feat/hero-section`)
-- 작업 → PR(또는 직접 merge) → main
+> 저장소: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio
+> 이 저장소만 커밋 작성자를 로컬 설정(`git config user.name/email`)했고,
+> 원격 URL에 사용자명(`MoonHakCheol@github.com`)을 넣어 계정별 자격 증명을 분리했습니다.
+
+### 브랜치 (현재 구성)
+- `main`: 배포(프로덕션) — push 시 Vercel 자동 배포
+- `dev`: 평상시 개발/통합 브랜치
+- `feat/<기능명>`: 큰 기능은 별도 브랜치에서 작업 후 `dev`로 병합 (예: `feat/hero-section`)
+- 흐름: `dev`(또는 `feat/*`) → 병합 → `main` → 자동 배포
+
+### 태그 (버전)
+- 배포 단위마다 유의적 버전(SemVer) 태그: `v1.0.0`, `v1.1.0`, ...
+- `git tag -a v1.1.0 -m "설명" && git push origin v1.1.0`
+- 변경 내역은 [CHANGELOG.md](../CHANGELOG.md)에 기록
 
 ### 커밋 메시지 (Conventional Commits)
 ```
@@ -163,15 +173,12 @@ docs: 기술 문서 폴더 구조 추가
 
 ---
 
-## 6. 배포 (Vercel)
+## 6. 배포 (Vercel) — ✅ 완료
 
-1. GitHub에 저장소 push
-2. [vercel.com](https://vercel.com)에서 저장소 import
-3. Framework Preset: **Vite** 자동 감지
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-4. Deploy → 자동으로 `*.vercel.app` 도메인 발급
-5. 이후 `main`에 push하면 자동 재배포
+- 라이브: **https://mhc-portfolio-iota.vercel.app/**
+- `main` 브랜치 push 시 자동 재배포 (GitHub 연동)
+- `vercel.json`에 SPA rewrite 설정 → 새로고침 시 `/projects/...` 404 방지
+- 상세 절차·점검 항목은 [docs/05-deploy.md](05-deploy.md) 참고
 
 ### 대안: GitHub Pages
 `vite.config.js`의 `base`를 저장소명으로 설정하고 `gh-pages` 패키지 사용. (Vercel이 더 간편)

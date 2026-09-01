@@ -25,6 +25,9 @@
 | 2 | [디자인 가이드](docs/02-design-guide.md) | 컬러, 타이포그래피, 간격, 반응형, 컴포넌트 스타일 |
 | 3 | [기술 문서](docs/03-tech-spec.md) | 스택 근거, 폴더 구조, 코딩 컨벤션, 배포 |
 | 4 | [작업 로드맵 · 할일](docs/04-roadmap.md) | 단계별 태스크와 체크리스트 |
+| 5 | [배포 가이드](docs/05-deploy.md) | Vercel 배포 절차, 커스텀 도메인, 점검 |
+
+변경 이력은 [CHANGELOG.md](CHANGELOG.md) 참고.
 
 ## 빠른 시작
 
@@ -45,13 +48,37 @@ npm run preview
 npm run lint
 ```
 
+## Git 브랜치 · 배포 흐름
+
+| 브랜치 | 용도 |
+| --- | --- |
+| `main` | 배포(프로덕션) — push 시 Vercel 자동 배포 |
+| `dev` | 평상시 개발/통합 |
+
+```bash
+# 개발은 dev에서
+git checkout dev
+# ...작업 & 커밋...
+git push origin dev            # Vercel 프리뷰 배포 생성
+
+# 배포 준비되면 main으로 병합
+git checkout main && git merge dev && git push origin main   # 프로덕션 자동 배포
+git checkout dev
+
+# 배포 단위마다 버전 태그
+git tag -a v1.1.0 -m "설명" && git push origin v1.1.0
+```
+
 ## 프로젝트 상태
 
 - [x] 기획 및 문서 정리
 - [x] 프로젝트 초기 세팅 (Vite)
-- [x] 공통 컴포넌트 / 레이아웃 (기본 뼈대)
-- [x] 섹션별 구현 (기본 뼈대 — 콘텐츠 채우기 필요)
-- [ ] 반응형 대응 다듬기
-- [x] 배포 (Vercel)
+- [x] 공통 컴포넌트 / 레이아웃
+- [x] 섹션별 구현 (Hero/About/Skills/Projects/Experience/Contact)
+- [x] 라우팅 + 프로젝트 상세 페이지
+- [x] 재미 요소 (클릭 사운드 · 코나미 이스터에그)
+- [x] 배포 (Vercel) · Git 태그/브랜치
+- [ ] 콘텐츠 보강 (프로젝트 상세·이력서·썸네일)
+- [ ] 마감 점검 (Lighthouse·접근성·크로스 브라우저)
 
 진행 현황은 [docs/04-roadmap.md](docs/04-roadmap.md)에서 관리합니다.

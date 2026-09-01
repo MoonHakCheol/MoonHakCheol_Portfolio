@@ -20,15 +20,21 @@ function Hero() {
           <Button as="a" href="#projects">
             프로젝트 보기
           </Button>
-          <Button
-            as="a"
-            variant="secondary"
-            href={profile.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            이력서 다운로드
-          </Button>
+          {profile.resumeReady ? (
+            <Button
+              as="a"
+              variant="secondary"
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              이력서 다운로드
+            </Button>
+          ) : (
+            <Button as="a" variant="secondary" href="#contact">
+              연락하기
+            </Button>
+          )}
         </div>
 
         <div className={styles.socials}>
