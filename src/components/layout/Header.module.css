@@ -1,0 +1,121 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navList a {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-sub);
+  transition: color 0.2s ease;
+}
+.navList a:hover,
+.navList a.active {
+  color: var(--color-primary);
+}
+
+.resumeBtn {
+  min-height: 38px;
+  padding-inline: var(--space-4);
+  font-size: var(--fs-sm);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.soundToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-sub);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+.soundToggle:hover {
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+}
+
+.menuToggle {
+  display: none;
+  color: var(--color-text);
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .navOpen {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+
+  .resumeBtn {
+    width: 100%;
+  }
+}
