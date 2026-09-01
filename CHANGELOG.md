@@ -10,6 +10,13 @@
 - 프로젝트 상세: 사용 기술(tags), 문제 해결 과정, 배운 점, 데모/저장소 링크
 - 프로젝트 썸네일/스크린샷, 이력서 PDF(`public/resume.pdf` → `resumeReady: true`), OG 이미지
 
+## [1.2.0] - 2026-09-02
+
+### 변경
+
+- 클릭 사운드 스타일 교체: 8비트(triangle 비프) → **부드러운 팝**(sine + 피치 글라이드)
+  - 클릭 / 사운드 토글 / 이스터에그 축하음 모두 부드러운 톤으로 통일
+
 ## [1.1.1] - 2026-09-02
 
 ### 추가
@@ -47,7 +54,8 @@
 - Vercel 배포 및 SPA rewrite (`vercel.json`)
 - Git 브랜치(`main`/`dev`) 및 릴리스 태그 설정
 
-[Unreleased]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/releases/tag/v1.0.0
