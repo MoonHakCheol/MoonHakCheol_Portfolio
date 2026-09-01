@@ -36,3 +36,14 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
+
+/* 준비 중 (비활성) */
+.pending {
+  color: var(--color-text-sub);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+.pending:hover {
+  border-color: var(--color-border);
+  color: var(--color-text-sub);
+}

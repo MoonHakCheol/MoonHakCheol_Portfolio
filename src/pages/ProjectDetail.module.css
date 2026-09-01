@@ -62,3 +62,19 @@
   font-size: var(--fs-lg);
   margin-bottom: var(--space-6);
 }
+
+/* 준비 중 표기 */
+.pending {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-sm);
+  color: var(--color-text-sub);
+  border: 1px dashed var(--color-border);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-4);
+}
+
+.pendingText {
+  color: var(--color-text-sub);
+  font-style: italic;
+}

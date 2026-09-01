@@ -82,3 +82,14 @@
 .link:hover {
   color: var(--color-primary-hover);
 }
+
+/* 준비 중 표기 */
+.pending {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-xs);
+  color: var(--color-text-sub);
+  border: 1px dashed var(--color-border);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-3);
+}

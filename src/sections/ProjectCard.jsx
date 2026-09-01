@@ -27,15 +27,20 @@ function ProjectCard({ project }) {
         <p className={styles.summary}>{summary}</p>
 
         <div className={styles.tags}>
-          {tags.map((t) => (
-            <Tag key={t}>{t}</Tag>
-          ))}
+          {tags.length > 0 ? (
+            tags.map((t) => <Tag key={t}>{t}</Tag>)
+          ) : (
+            <span className={styles.pending}>기술 스택 준비 중</span>
+          )}
         </div>
 
         <div className={styles.links}>
           <Link to={`/projects/${id}`} className={styles.link}>
             자세히 <FiArrowRight />
           </Link>
+          {!links.demo && !links.github && (
+            <span className={styles.pending}>링크 준비 중</span>
+          )}
           {links.demo && (
             <a
               href={links.demo}

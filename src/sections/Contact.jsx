@@ -44,7 +44,7 @@ function Contact() {
                 </a>
               </li>
             )}
-            {profile.links.blog && (
+            {profile.links.blog ? (
               <li>
                 <a
                   href={profile.links.blog}
@@ -55,6 +55,17 @@ function Contact() {
                   <FiEdit3 size={20} />
                   <span>Blog</span>
                 </a>
+              </li>
+            ) : (
+              <li>
+                <span
+                  className={`${styles.link} ${styles.pending}`}
+                  aria-disabled="true"
+                  title="블로그 준비 중입니다"
+                >
+                  <FiEdit3 size={20} />
+                  <span>블로그 준비 중</span>
+                </span>
               </li>
             )}
           </ul>

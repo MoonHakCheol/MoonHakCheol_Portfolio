@@ -36,9 +36,11 @@ function ProjectDetail() {
         <p className={styles.summary}>{summary}</p>
 
         <div className={styles.tags}>
-          {tags.map((t) => (
-            <Tag key={t}>{t}</Tag>
-          ))}
+          {tags.length > 0 ? (
+            tags.map((t) => <Tag key={t}>{t}</Tag>)
+          ) : (
+            <span className={styles.pending}>기술 스택 준비 중</span>
+          )}
         </div>
 
         <div className={styles.links}>
@@ -51,6 +53,9 @@ function ProjectDetail() {
             <a href={links.github} target="_blank" rel="noopener noreferrer">
               <FiGithub /> GitHub
             </a>
+          )}
+          {!links.demo && !links.github && (
+            <span className={styles.pending}>데모 · 저장소 링크 준비 중</span>
           )}
         </div>
 
@@ -67,18 +72,18 @@ function ProjectDetail() {
               <dd>{role}</dd>
             </div>
           )}
-          {problem && (
-            <div>
-              <dt>문제와 해결</dt>
-              <dd>{problem}</dd>
-            </div>
-          )}
-          {learned && (
-            <div>
-              <dt>배운 점</dt>
-              <dd>{learned}</dd>
-            </div>
-          )}
+          <div>
+            <dt>문제와 해결</dt>
+            <dd className={problem ? '' : styles.pendingText}>
+              {problem || '내용을 채울 예정입니다.'}
+            </dd>
+          </div>
+          <div>
+            <dt>배운 점</dt>
+            <dd className={learned ? '' : styles.pendingText}>
+              {learned || '내용을 채울 예정입니다.'}
+            </dd>
+          </div>
         </dl>
       </Container>
     </section>

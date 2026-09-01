@@ -60,7 +60,7 @@ function Header() {
               </li>
             ))}
           </ul>
-          {profile.resumeReady && (
+          {profile.resumeReady ? (
             <Button
               as="a"
               href={profile.resumeUrl}
@@ -69,6 +69,16 @@ function Header() {
               className={styles.resumeBtn}
             >
               이력서
+            </Button>
+          ) : (
+            <Button
+              as="button"
+              variant="secondary"
+              className={styles.resumeBtn}
+              disabled
+              title="이력서 준비 중입니다"
+            >
+              이력서 준비 중
             </Button>
           )}
         </nav>

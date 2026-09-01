@@ -10,6 +10,16 @@
 - 프로젝트 상세: 사용 기술(tags), 문제 해결 과정, 배운 점, 데모/저장소 링크
 - 프로젝트 썸네일/스크린샷, 이력서 PDF(`public/resume.pdf` → `resumeReady: true`), OG 이미지
 
+## [1.1.1] - 2026-09-02
+
+### 추가
+
+- 내용이 비어 있는 영역에 "준비 중 / 내용을 채울 예정" 표기·비활성 처리
+  - 이력서 버튼: "이력서 준비 중" 비활성 버튼 (헤더·Hero)
+  - 프로젝트 카드/상세: 빈 기술 스택·링크에 "준비 중" 배지
+  - 프로젝트 상세: 문제와 해결 / 배운 점이 비면 "내용을 채울 예정입니다" 표기
+  - Contact: 블로그 링크 없을 때 "블로그 준비 중" 비활성 표기
+
 ## [1.1.0] - 2026-09-02
 
 ### 추가
@@ -37,6 +47,7 @@
 - Vercel 배포 및 SPA rewrite (`vercel.json`)
 - Git 브랜치(`main`/`dev`) 및 릴리스 태그 설정
 
-[Unreleased]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/releases/tag/v1.0.0

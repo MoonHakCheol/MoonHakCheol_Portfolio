@@ -31,3 +31,16 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
+
+/* 비활성화 (준비 중) */
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.primary:disabled:hover {
+  background-color: var(--color-primary);
+}
+.secondary:disabled:hover {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}

@@ -31,8 +31,13 @@ function Hero() {
               이력서 다운로드
             </Button>
           ) : (
-            <Button as="a" variant="secondary" href="#contact">
-              연락하기
+            <Button
+              as="button"
+              variant="secondary"
+              disabled
+              title="이력서 준비 중입니다"
+            >
+              이력서 준비 중
             </Button>
           )}
         </div>
