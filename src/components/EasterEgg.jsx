@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useKonamiCode } from '../hooks/useKonamiCode';
 import { useSound } from '../context/sound-context';
+import { useLang } from '../i18n/lang-context';
+import { ui } from '../i18n/ui';
 import { playSound } from '../utils/sound';
 import { launchConfetti } from '../utils/confetti';
 import styles from './EasterEgg.module.css';
 
 function EasterEgg() {
   const { enabled } = useSound();
+  const { lang } = useLang();
   const [show, setShow] = useState(false);
 
   const trigger = useCallback(() => {
@@ -26,7 +29,7 @@ function EasterEgg() {
 
   return (
     <div className={styles.toast} role="status" aria-live="polite" hidden={!show}>
-      🎉 발견하셨네요! 끝까지 살펴봐 주셔서 감사합니다.
+      {ui[lang].easterEgg}
     </div>
   );
 }

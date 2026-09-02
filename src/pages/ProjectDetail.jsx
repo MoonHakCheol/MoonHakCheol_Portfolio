@@ -2,20 +2,24 @@ import { useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiGithub, FiExternalLink } from 'react-icons/fi';
 import Container from '../components/common/Container';
 import Tag from '../components/common/Tag';
+import { useLang, tr } from '../i18n/lang-context';
+import { ui } from '../i18n/ui';
 import { projects } from '../data/projects';
 import styles from './ProjectDetail.module.css';
 
 function ProjectDetail() {
   const { id } = useParams();
+  const { lang } = useLang();
+  const t = ui[lang];
   const project = projects.find((p) => p.id === id);
 
   if (!project) {
     return (
       <section className="section">
         <Container>
-          <p className={styles.notFound}>프로젝트를 찾을 수 없습니다.</p>
+          <p className={styles.notFound}>{t.detailNotFound}</p>
           <Link to="/#projects" className={styles.back}>
-            <FiArrowLeft /> 목록으로
+            <FiArrowLeft /> {t.detailBack}
           </Link>
         </Container>
       </section>
@@ -24,22 +28,24 @@ function ProjectDetail() {
 
   const { title, summary, tags, links, period, role, problem, learned } =
     project;
+  const problemText = tr(problem, lang);
+  const learnedText = tr(learned, lang);
 
   return (
     <section className="section">
       <Container>
         <Link to="/#projects" className={styles.back}>
-          <FiArrowLeft /> 목록으로
+          <FiArrowLeft /> {t.detailBack}
         </Link>
 
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.summary}>{summary}</p>
+        <p className={styles.summary}>{tr(summary, lang)}</p>
 
         <div className={styles.tags}>
           {tags.length > 0 ? (
-            tags.map((t) => <Tag key={t}>{t}</Tag>)
+            tags.map((tag) => <Tag key={tr(tag, 'en')}>{tr(tag, lang)}</Tag>)
           ) : (
-            <span className={styles.pending}>기술 스택 준비 중</span>
+            <span className={styles.pending}>{t.techPending}</span>
           )}
         </div>
 
@@ -55,33 +61,33 @@ function ProjectDetail() {
             </a>
           )}
           {!links.demo && !links.github && (
-            <span className={styles.pending}>데모 · 저장소 링크 준비 중</span>
+            <span className={styles.pending}>{t.detailLinkPending}</span>
           )}
         </div>
 
         <dl className={styles.meta}>
           {period && (
             <div>
-              <dt>기간 / 인원</dt>
-              <dd>{period}</dd>
+              <dt>{t.detailDuration}</dt>
+              <dd>{tr(period, lang)}</dd>
             </div>
           )}
           {role && (
             <div>
-              <dt>역할</dt>
-              <dd>{role}</dd>
+              <dt>{t.detailRole}</dt>
+              <dd>{tr(role, lang)}</dd>
             </div>
           )}
           <div>
-            <dt>문제와 해결</dt>
-            <dd className={problem ? '' : styles.pendingText}>
-              {problem || '내용을 채울 예정입니다.'}
+            <dt>{t.detailProblem}</dt>
+            <dd className={problemText ? '' : styles.pendingText}>
+              {problemText || t.detailComingSoon}
             </dd>
           </div>
           <div>
-            <dt>배운 점</dt>
-            <dd className={learned ? '' : styles.pendingText}>
-              {learned || '내용을 채울 예정입니다.'}
+            <dt>{t.detailLearned}</dt>
+            <dd className={learnedText ? '' : styles.pendingText}>
+              {learnedText || t.detailComingSoon}
             </dd>
           </div>
         </dl>

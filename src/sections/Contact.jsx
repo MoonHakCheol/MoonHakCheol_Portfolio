@@ -1,18 +1,21 @@
 import { FiGithub, FiMail, FiEdit3, FiPhone } from 'react-icons/fi';
 import Container from '../components/common/Container';
 import SectionTitle from '../components/common/SectionTitle';
+import { useLang } from '../i18n/lang-context';
+import { ui } from '../i18n/ui';
 import { profile } from '../data/profile';
 import styles from './Contact.module.css';
 
 function Contact() {
+  const { lang } = useLang();
+  const t = ui[lang];
+
   return (
     <section id="contact" className="section">
       <Container>
-        <SectionTitle subtitle="편하게 연락 주세요">Contact</SectionTitle>
+        <SectionTitle subtitle={t.contactSubtitle}>Contact</SectionTitle>
         <div className={styles.card}>
-          <p className={styles.lead}>
-            함께 성장할 기회를 찾고 있습니다. 언제든 연락 주세요!
-          </p>
+          <p className={styles.lead}>{t.contactLead}</p>
           <ul className={styles.links}>
             <li>
               <a href={`mailto:${profile.email}`} className={styles.link}>
@@ -61,10 +64,10 @@ function Contact() {
                 <span
                   className={`${styles.link} ${styles.pending}`}
                   aria-disabled="true"
-                  title="블로그 준비 중입니다"
+                  title={t.blogPending}
                 >
                   <FiEdit3 size={20} />
-                  <span>블로그 준비 중</span>
+                  <span>{t.blogPending}</span>
                 </span>
               </li>
             )}

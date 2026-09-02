@@ -1,7 +1,7 @@
-// 기술 스택 — 카테고리별로 정리.
+// 기술 스택 — 카테고리별로 정리. category는 다국어, items(기술명)는 공통.
 export const skills = [
   {
-    category: '언어',
+    category: { ko: '언어', en: 'Languages' },
     items: [
       'Python',
       'JavaScript',
@@ -17,31 +17,34 @@ export const skills = [
     ],
   },
   {
-    category: '프레임워크 / 라이브러리',
+    category: { ko: '프레임워크 / 라이브러리', en: 'Frameworks / Libraries' },
     items: ['Next.js', 'Spring Boot', 'discord.js', 'discord.py'],
   },
   {
-    category: 'DB',
+    category: { ko: 'DB', en: 'Databases' },
     items: ['MySQL', 'MariaDB', 'Firebase', 'Supabase', 'SQLite', 'Turso', 'MSSQL'],
   },
   {
-    category: '클라우드',
+    category: { ko: '클라우드', en: 'Cloud' },
     items: ['AWS', 'Vercel'],
   },
   {
-    category: '서버',
+    category: { ko: '서버', en: 'Server' },
     items: ['Node.js', 'Linux (Kali)', 'Linux (Ubuntu)'],
   },
   {
-    category: '디자인',
-    items: ['Photoshop (기본)', 'Figma'],
+    category: { ko: '디자인', en: 'Design' },
+    items: [{ ko: 'Photoshop (기본)', en: 'Photoshop (basic)' }, 'Figma'],
   },
   {
-    category: '하드웨어',
-    items: ['라즈베리파이', '아두이노'],
+    category: { ko: '하드웨어', en: 'Hardware' },
+    items: [
+      { ko: '라즈베리파이', en: 'Raspberry Pi' },
+      { ko: '아두이노', en: 'Arduino' },
+    ],
   },
   {
-    category: 'IDE / 에디터',
+    category: { ko: 'IDE / 에디터', en: 'IDE / Editors' },
     items: [
       'Visual Studio Code',
       'Visual Studio',

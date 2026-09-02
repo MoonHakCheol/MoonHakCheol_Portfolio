@@ -4,6 +4,8 @@ import Container from '../common/Container';
 import Button from '../common/Button';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import { useSound } from '../../context/sound-context';
+import { useLang, tr } from '../../i18n/lang-context';
+import { ui } from '../../i18n/ui';
 import { playSound } from '../../utils/sound';
 import { profile } from '../../data/profile';
 import styles from './Header.module.css';
@@ -22,6 +24,8 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const activeId = useScrollSpy(SECTION_IDS, 80);
   const { enabled, toggle, play } = useSound();
+  const { lang, toggle: toggleLang } = useLang();
+  const t = ui[lang];
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -36,11 +40,16 @@ function Header() {
     toggle();
   };
 
+  const handleLangToggle = () => {
+    play('click');
+    toggleLang();
+  };
+
   return (
     <header className={styles.header}>
       <Container className={styles.inner}>
         <a href="#home" className={styles.logo} onClick={handleNavClick}>
-          {profile.name}
+          {tr(profile.name, lang)}
         </a>
 
         <nav
@@ -68,7 +77,7 @@ function Header() {
               rel="noopener noreferrer"
               className={styles.resumeBtn}
             >
-              이력서
+              {t.resume}
             </Button>
           ) : (
             <Button
@@ -76,9 +85,9 @@ function Header() {
               variant="secondary"
               className={styles.resumeBtn}
               disabled
-              title="이력서 준비 중입니다"
+              title={t.resumePending}
             >
-              이력서 준비 중
+              {t.resumePending}
             </Button>
           )}
         </nav>
@@ -86,11 +95,21 @@ function Header() {
         <div className={styles.controls}>
           <button
             type="button"
+            className={styles.langToggle}
+            onClick={handleLangToggle}
+            aria-label={t.langToggle}
+            title={t.langToggle}
+          >
+            {lang === 'ko' ? 'EN' : '한'}
+          </button>
+
+          <button
+            type="button"
             className={styles.soundToggle}
             onClick={handleSoundToggle}
-            aria-label={enabled ? '사운드 끄기' : '사운드 켜기'}
+            aria-label={enabled ? t.soundOn : t.soundOff}
             aria-pressed={enabled}
-            title={enabled ? '사운드 끄기' : '사운드 켜기'}
+            title={enabled ? t.soundOn : t.soundOff}
           >
             {enabled ? <FiVolume2 size={20} /> : <FiVolumeX size={20} />}
           </button>

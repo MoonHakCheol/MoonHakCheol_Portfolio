@@ -1,0 +1,73 @@
+// 컴포넌트에서 쓰는 UI 문구 사전. 콘텐츠(프로필/경력 등)는 각 data 파일에서 이중 언어로 관리.
+export const ui = {
+  ko: {
+    // Header
+    resume: '이력서',
+    resumePending: '이력서 준비 중',
+    soundOn: '사운드 끄기',
+    soundOff: '사운드 켜기',
+    langToggle: 'English로 보기',
+    // Hero
+    heroGreeting: '안녕하세요 👋',
+    heroViewProjects: '프로젝트 보기',
+    heroDownloadResume: '이력서 다운로드',
+    heroResumePending: '이력서 준비 중',
+    // 섹션 부제
+    aboutSubtitle: '저를 소개합니다',
+    skillsSubtitle: '사용할 수 있는 기술',
+    projectsSubtitle: '직접 만든 결과물',
+    experienceSubtitle: '경력 · 활동 · 교육',
+    contactSubtitle: '편하게 연락 주세요',
+    // Experience
+    expProjects: '진행 프로젝트',
+    // Project card
+    cardDetails: '자세히',
+    techPending: '기술 스택 준비 중',
+    linkPending: '링크 준비 중',
+    // Project detail
+    detailBack: '목록으로',
+    detailDuration: '기간 / 인원',
+    detailRole: '역할',
+    detailProblem: '문제와 해결',
+    detailLearned: '배운 점',
+    detailComingSoon: '내용을 채울 예정입니다.',
+    detailLinkPending: '데모 · 저장소 링크 준비 중',
+    detailNotFound: '프로젝트를 찾을 수 없습니다.',
+    // Contact
+    contactLead: '함께 성장할 기회를 찾고 있습니다. 언제든 연락 주세요!',
+    blogPending: '블로그 준비 중',
+    // Easter egg
+    easterEgg: '🎉 발견하셨네요! 끝까지 살펴봐 주셔서 감사합니다.',
+  },
+  en: {
+    resume: 'Resume',
+    resumePending: 'Resume coming soon',
+    soundOn: 'Turn sound off',
+    soundOff: 'Turn sound on',
+    langToggle: '한국어로 보기',
+    heroGreeting: 'Hello 👋',
+    heroViewProjects: 'View Projects',
+    heroDownloadResume: 'Download Resume',
+    heroResumePending: 'Resume coming soon',
+    aboutSubtitle: 'A little about me',
+    skillsSubtitle: 'Technologies I use',
+    projectsSubtitle: 'Things I have built',
+    experienceSubtitle: 'Experience · Activities · Education',
+    contactSubtitle: 'Feel free to reach out',
+    expProjects: 'Projects',
+    cardDetails: 'Details',
+    techPending: 'Tech stack TBD',
+    linkPending: 'Links TBD',
+    detailBack: 'Back to list',
+    detailDuration: 'Duration / Team',
+    detailRole: 'Role',
+    detailProblem: 'Problem & Solution',
+    detailLearned: 'What I learned',
+    detailComingSoon: 'Coming soon.',
+    detailLinkPending: 'Demo · repo links TBD',
+    detailNotFound: 'Project not found.',
+    contactLead: "I'm looking for opportunities to grow together. Feel free to reach out anytime!",
+    blogPending: 'Blog coming soon',
+    easterEgg: '🎉 You found it! Thanks for looking around to the very end.',
+  },
+};

@@ -1,6 +1,8 @@
 import { FiTool, FiDatabase, FiZap, FiServer } from 'react-icons/fi';
 import Container from '../components/common/Container';
 import SectionTitle from '../components/common/SectionTitle';
+import { useLang, tr } from '../i18n/lang-context';
+import { ui } from '../i18n/ui';
 import { experience } from '../data/experience';
 import styles from './Experience.module.css';
 
@@ -26,17 +28,20 @@ function renderDescription(text) {
 }
 
 function Experience() {
+  const { lang } = useLang();
+  const t = ui[lang];
+
   return (
     <section id="experience" className="section">
       <Container>
-        <SectionTitle subtitle="경력 · 활동 · 교육">Experience</SectionTitle>
+        <SectionTitle subtitle={t.experienceSubtitle}>Experience</SectionTitle>
         <ol className={styles.timeline}>
           {experience.map((item, i) => (
             <li key={i} className={styles.item}>
-              <span className={styles.period}>{item.period}</span>
+              <span className={styles.period}>{tr(item.period, lang)}</span>
               <div className={styles.content}>
-                <h3 className={styles.title}>{item.title}</h3>
-                {item.org && <p className={styles.org}>{item.org}</p>}
+                <h3 className={styles.title}>{tr(item.title, lang)}</h3>
+                {item.org && <p className={styles.org}>{tr(item.org, lang)}</p>}
 
                 {item.logos && item.logos.length > 0 && (
                   <div className={styles.logos}>
@@ -53,7 +58,7 @@ function Experience() {
                 )}
 
                 <p className={styles.desc}>
-                  {renderDescription(item.description)}
+                  {renderDescription(tr(item.description, lang))}
                 </p>
 
                 {item.highlights && item.highlights.length > 0 && (
@@ -61,15 +66,20 @@ function Experience() {
                     {item.highlights.map((h) => {
                       const Icon = ICONS[h.icon];
                       return (
-                        <li key={h.label} className={styles.highlightItem}>
+                        <li
+                          key={tr(h.label, 'en')}
+                          className={styles.highlightItem}
+                        >
                           {Icon && (
                             <span className={styles.hIcon} aria-hidden="true">
                               <Icon size={18} />
                             </span>
                           )}
                           <div>
-                            <span className={styles.hLabel}>{h.label}</span>
-                            <p className={styles.hDesc}>{h.desc}</p>
+                            <span className={styles.hLabel}>
+                              {tr(h.label, lang)}
+                            </span>
+                            <p className={styles.hDesc}>{tr(h.desc, lang)}</p>
                           </div>
                         </li>
                       );
@@ -79,16 +89,24 @@ function Experience() {
 
                 {item.projects && item.projects.length > 0 && (
                   <div className={styles.projects}>
-                    <span className={styles.projectsLabel}>진행 프로젝트</span>
+                    <span className={styles.projectsLabel}>{t.expProjects}</span>
                     <ul className={styles.projectList}>
                       {item.projects.map((p) => (
                         <li key={p.name} className={styles.projectItem}>
                           <div className={styles.pHead}>
                             <span className={styles.pName}>{p.name}</span>
-                            <span className={styles.pPeriod}>{p.period}</span>
+                            <span className={styles.pPeriod}>
+                              {tr(p.period, lang)}
+                            </span>
                           </div>
-                          {p.desc && <p className={styles.pDesc}>{p.desc}</p>}
-                          {p.role && <span className={styles.pRole}>{p.role}</span>}
+                          {p.desc && (
+                            <p className={styles.pDesc}>{tr(p.desc, lang)}</p>
+                          )}
+                          {p.role && (
+                            <span className={styles.pRole}>
+                              {tr(p.role, lang)}
+                            </span>
+                          )}
                         </li>
                       ))}
                     </ul>

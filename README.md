@@ -11,6 +11,7 @@
 - **프레임워크**: React 18 (JavaScript)
 - **스타일**: CSS Modules (+ 필요 시 유틸리티)
 - **라우팅**: react-router-dom (단일 페이지 스크롤 + 세부 페이지 혼용)
+- **다국어**: 한국어 / 영어 토글 (자체 i18n, `src/i18n/`)
 - **배포**: Vercel (또는 GitHub Pages)
 
 > 스택 선정 근거는 [docs/03-tech-spec.md](docs/03-tech-spec.md) 참고.
@@ -77,6 +78,7 @@ git tag -a v1.1.0 -m "설명" && git push origin v1.1.0
 - [x] 섹션별 구현 (Hero/About/Skills/Projects/Experience/Contact)
 - [x] 라우팅 + 프로젝트 상세 페이지
 - [x] 재미 요소 (클릭 사운드 · 코나미 이스터에그)
+- [x] 한국어 / 영어 다국어 지원
 - [x] 배포 (Vercel) · Git 태그/브랜치
 - [ ] 콘텐츠 보강 (프로젝트 상세·이력서·썸네일)
 - [ ] 마감 점검 (Lighthouse·접근성·크로스 브라우저)

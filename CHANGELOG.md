@@ -10,6 +10,15 @@
 - 프로젝트 상세: 사용 기술(tags), 문제 해결 과정, 배운 점, 데모/저장소 링크
 - 프로젝트 썸네일/스크린샷, 이력서 PDF(`public/resume.pdf` → `resumeReady: true`), OG 이미지
 
+## [1.3.0] - 2026-09-02
+
+### 추가
+
+- **한국어 ↔ 영어 이중 언어 지원 (i18n)**
+  - 헤더에 언어 토글 버튼(EN/한), 선택은 localStorage에 기억
+  - 모든 UI 문구·프로필·경력·프로젝트 콘텐츠를 `{ ko, en }` 구조로 다국어화
+  - `document.documentElement.lang` 자동 갱신
+
 ## [1.2.0] - 2026-09-02
 
 ### 변경
@@ -54,7 +63,8 @@
 - Vercel 배포 및 SPA rewrite (`vercel.json`)
 - Git 브랜치(`main`/`dev`) 및 릴리스 태그 설정
 
-[Unreleased]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/MoonHakCheol/MoonHakCheol_Portfolio/compare/v1.0.0...v1.1.0

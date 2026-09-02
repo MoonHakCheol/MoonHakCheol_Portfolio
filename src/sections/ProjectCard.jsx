@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import { FiGithub, FiExternalLink, FiArrowRight } from 'react-icons/fi';
 import Tag from '../components/common/Tag';
+import { useLang, tr } from '../i18n/lang-context';
+import { ui } from '../i18n/ui';
 import styles from './ProjectCard.module.css';
 
 function ProjectCard({ project }) {
   const { id, title, summary, thumbnail, tags, links } = project;
+  const { lang } = useLang();
+  const t = ui[lang];
 
   return (
     <article className={styles.card}>
@@ -24,22 +28,22 @@ function ProjectCard({ project }) {
             {title}
           </Link>
         </h3>
-        <p className={styles.summary}>{summary}</p>
+        <p className={styles.summary}>{tr(summary, lang)}</p>
 
         <div className={styles.tags}>
           {tags.length > 0 ? (
-            tags.map((t) => <Tag key={t}>{t}</Tag>)
+            tags.map((tag) => <Tag key={tr(tag, 'en')}>{tr(tag, lang)}</Tag>)
           ) : (
-            <span className={styles.pending}>기술 스택 준비 중</span>
+            <span className={styles.pending}>{t.techPending}</span>
           )}
         </div>
 
         <div className={styles.links}>
           <Link to={`/projects/${id}`} className={styles.link}>
-            자세히 <FiArrowRight />
+            {t.cardDetails} <FiArrowRight />
           </Link>
           {!links.demo && !links.github && (
-            <span className={styles.pending}>링크 준비 중</span>
+            <span className={styles.pending}>{t.linkPending}</span>
           )}
           {links.demo && (
             <a
