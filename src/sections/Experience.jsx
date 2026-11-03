@@ -89,16 +89,21 @@ function TimelineItem({ item }) {
               {renderDescription(tr(item.description, lang))}
             </p>
 
-            {item.link && (
-              <a
-                className={styles.link}
-                href={item.link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {tr(item.link.label, lang)}
-                <FiArrowUpRight size={15} aria-hidden="true" />
-              </a>
+            {item.links && item.links.length > 0 && (
+              <div className={styles.links}>
+                {item.links.map((link) => (
+                  <a
+                    key={link.href}
+                    className={styles.link}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {tr(link.label, lang)}
+                    <FiArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
             )}
 
             {item.highlights && item.highlights.length > 0 && (
@@ -143,11 +148,9 @@ function Experience() {
   const wrapRef = useRef(null);
   const { lang } = useLang();
   const t = ui[lang];
-  // 최신순 목록이라 시간은 아래에서 위로 흐른다. 선도 아래(과거)에서 위(현재)로 채우고,
-  // 맨 위 항목에 닿는 순간이 화면 안에서 보이도록 목록 위쪽 기준으로 진행률을 잡는다.
   const { scrollYProgress } = useScroll({
     target: wrapRef,
-    offset: ['start 1', 'start 0.2'],
+    offset: ['start 0.8', 'end 0.7'],
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 160,

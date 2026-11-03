@@ -15,10 +15,16 @@ export const experience = [
       ko: '**페헤**라는 이름으로 프리랜서 활동을 하며, 디스코드 봇과 웹을 개발하는 **페헤개발팀(FDT)**을 운영하고 있습니다.',
       en: 'I freelance under the name **Fehe** and run **FeheDeveloperTeam (FDT)**, a team focused on Discord bots and web development.',
     },
-    link: {
-      href: 'https://www.fehe.dev',
-      label: { ko: '팀 사이트 fehe.dev', en: 'Team site: fehe.dev' },
-    },
+    links: [
+      {
+        href: 'https://www.fehe.dev',
+        label: { ko: '팀 사이트 fehe.dev', en: 'Team site: fehe.dev' },
+      },
+      {
+        href: 'https://www.fehe.dev/member/fehe',
+        label: { ko: '페헤 소개 페이지', en: 'About Fehe' },
+      },
+    ],
     highlights: [
       {
         label: { ko: '제공 서비스', en: 'Services' },

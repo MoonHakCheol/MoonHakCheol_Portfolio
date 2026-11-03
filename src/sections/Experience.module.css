@@ -2,7 +2,7 @@
   position: relative;
 }
 
-/* 스크롤에 따라 아래(과거)에서 위(현재)로 채워지는 타임라인 선 */
+/* 스크롤 방향과 같이 위에서 아래로 채워지는 타임라인 선 */
 .rail {
   position: absolute;
   top: 0;
@@ -10,7 +10,7 @@
   left: 0;
   width: 2px;
   background-color: var(--color-primary);
-  transform-origin: 50% 100%;
+  transform-origin: 50% 0;
 }
 
 .timeline {
@@ -109,6 +109,12 @@
 .highlight {
   color: var(--color-text);
   font-weight: var(--fw-semibold);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-6);
 }
 
 .link {
