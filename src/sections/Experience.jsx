@@ -148,11 +148,11 @@ function Experience() {
   const wrapRef = useRef(null);
   const { lang } = useLang();
   const t = ui[lang];
-  // 선은 아래에서 위로 채운다. 맨 위 항목에 닿는 순간이 화면 안에서 보이도록
-  // 목록 위쪽 기준으로 진행률을 잡는다.
+  // 선은 아래에서 위로 채운다. 목록을 읽는 동안 올라오는 모습이 보이도록
+  // 목록 전체를 지나가는 구간에 걸쳐 진행률을 잡는다.
   const { scrollYProgress } = useScroll({
     target: wrapRef,
-    offset: ['start 1', 'start 0.2'],
+    offset: ['start 0.8', 'end 0.7'],
   });
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 160,
