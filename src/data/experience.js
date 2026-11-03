@@ -75,6 +75,10 @@ export const experience = [
         name: 'Jambox',
         role: { ko: '팀장 · 개발', en: 'Team Lead · Development' },
         period: { ko: '2026년 2학기', en: '2026 Fall' },
+        desc: {
+          ko: '오락·레저 활동을 찾아주고 추천해 주는 사이트',
+          en: 'A site that helps you find and get recommendations for entertainment and leisure activities',
+        },
       },
     ],
   },

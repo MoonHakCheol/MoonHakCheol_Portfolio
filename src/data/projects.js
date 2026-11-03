@@ -38,7 +38,10 @@ export const projects = [
   {
     id: 'jambox',
     title: 'Jambox',
-    summary: { ko: '', en: '' }, // TODO: 한 줄 설명
+    summary: {
+      ko: '오락·레저 활동을 찾아주고 추천해 주는 사이트',
+      en: 'A site that helps you find and get recommendations for entertainment and leisure activities',
+    },
     tags: [], // TODO: 실제 사용 기술 입력
     links: {
       demo: '',

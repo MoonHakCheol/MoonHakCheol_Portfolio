@@ -11,19 +11,23 @@ function About() {
 
   return (
     <Section id="about" index="01" title="About" subtitle={t.aboutSubtitle}>
-      <Reveal as="p" className={styles.intro}>
-        {tr(profile.intro, lang)}
+      <Reveal as="p" className={styles.lead}>
+        {tr(profile.about.lead, lang)}
       </Reveal>
-      <ul className={styles.info}>
-        {profile.info.map((item, i) => (
+      <Reveal as="p" className={styles.story} delay={0.06}>
+        {tr(profile.about.story, lang)}
+      </Reveal>
+
+      <ul className={styles.focus}>
+        {profile.about.focus.map((item, i) => (
           <Reveal
             as="li"
             key={tr(item.label, 'en')}
-            delay={0.08 + i * 0.06}
-            className={styles.row}
+            delay={0.1 + i * 0.06}
+            className={styles.item}
           >
-            <span className={styles.label}>{tr(item.label, lang)}</span>
-            <span>{tr(item.value, lang)}</span>
+            <h3 className={styles.label}>{tr(item.label, lang)}</h3>
+            <p className={styles.desc}>{tr(item.desc, lang)}</p>
           </Reveal>
         ))}
       </ul>
