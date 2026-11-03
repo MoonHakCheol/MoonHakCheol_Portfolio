@@ -1,0 +1,136 @@
+/* 모바일: 번호와 화살표가 윗줄, 그 아래로 내용이 쌓인다 */
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'index arrow'
+    'main main'
+    'meta meta';
+  gap: var(--space-2) var(--space-4);
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.index {
+  grid-area: index;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-sub);
+}
+
+.main {
+  grid-area: main;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+}
+
+.titleLink {
+  transition: color 0.2s ease;
+}
+
+.titleLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.titleLink:focus-visible {
+  outline: none;
+}
+
+.titleLink:focus-visible::after {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.summary {
+  max-width: 36em;
+  margin-top: var(--space-2);
+  color: var(--color-text-sub);
+}
+
+.pending {
+  font-size: var(--fs-sm);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* 줄 전체 링크 위에서도 눌리도록 위로 올린다 */
+.links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-primary);
+}
+
+.meta {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--color-text-sub);
+}
+
+.arrow {
+  grid-area: arrow;
+  color: var(--color-text-sub);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.row:focus-within .arrow {
+  color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .row:hover .titleLink {
+    color: var(--color-primary);
+  }
+
+  .row:hover .arrow {
+    color: var(--color-primary);
+    transform: translate(3px, -3px);
+  }
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 2.5rem minmax(0, 1fr) 13rem 1.5rem;
+    grid-template-areas: 'index main meta arrow';
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+
+  .index {
+    padding-top: 0.4rem;
+  }
+
+  .meta {
+    flex-direction: column;
+    padding-top: 0.3rem;
+  }
+}

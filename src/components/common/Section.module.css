@@ -1,0 +1,49 @@
+.section {
+  padding-block: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: var(--header-height);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.index {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: var(--fs-heading);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--color-text-sub);
+}
+
+/* 그리드 안에서 가로 스크롤 영역이 페이지를 넓히지 않도록 */
+.body {
+  min-width: 0;
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--space-16);
+  }
+
+  .head {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-8));
+    align-self: start;
+  }
+}

@@ -1,50 +1,48 @@
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      var(--color-primary-soft),
-      transparent 40%
-    ),
-    var(--color-bg);
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
 }
 
-/* 배경 점 격자: 가장자리로 갈수록 사라진다 */
+/* 배경 점 격자: 오른쪽에 모여 있고 글자 쪽으로 갈수록 사라진다 */
 .dots,
 .dotsGlow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-size: 26px 26px;
+  background-size: 24px 24px;
 }
 
 .dots {
   background-image: radial-gradient(var(--color-dot) 1.1px, transparent 1.2px);
   -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    #000 35%,
-    transparent 78%
+    ellipse 55% 75% at 85% 40%,
+    #000 20%,
+    transparent 100%
   );
-  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 78%);
+  mask-image: radial-gradient(
+    ellipse 55% 75% at 85% 40%,
+    #000 20%,
+    transparent 100%
+  );
 }
 
-/* 커서 주변의 점만 포인트 컬러로 은은하게 밝아진다 */
+/* 커서 주변의 점만 포인트 컬러로 밝아진다 */
 .dotsGlow {
   background-image: radial-gradient(
     var(--color-primary) 1.2px,
     transparent 1.3px
   );
   -webkit-mask-image: radial-gradient(
-    200px circle at var(--hx, 50%) var(--hy, 50%),
+    180px circle at var(--hx, 70%) var(--hy, 40%),
     #000,
     transparent
   );
   mask-image: radial-gradient(
-    200px circle at var(--hx, 50%) var(--hy, 50%),
+    180px circle at var(--hx, 70%) var(--hy, 40%),
     #000,
     transparent
   );
@@ -54,26 +52,39 @@
 
 @media (hover: hover) {
   .hero:hover .dotsGlow {
-    opacity: 0.55;
+    opacity: 0.6;
   }
 }
 
 .inner {
   position: relative;
-  text-align: center;
-  padding-block: var(--space-16);
+  padding-block: var(--space-12) var(--space-24);
 }
 
 .greeting {
-  color: var(--color-text-sub);
-  font-size: var(--fs-lg);
   margin-bottom: var(--space-4);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-sub);
 }
 
 .name {
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-display);
   font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+
+/* 줄 단위로 아래에서 올라오는 등장 효과를 위한 마스크 */
+.lineMask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.line {
+  display: block;
 }
 
 .highlight {
@@ -81,52 +92,67 @@
 }
 
 .tagline {
+  max-width: 34em;
   margin-top: var(--space-6);
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
   color: var(--color-text-sub);
-  font-size: var(--fs-base);
-  max-width: 40ch;
-  margin-inline: auto;
 }
 
 .actions {
-  margin-top: var(--space-8);
   display: flex;
-  gap: var(--space-3);
-  justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
 }
 
 .socials {
-  margin-top: var(--space-8);
   display: flex;
-  gap: var(--space-6);
-  justify-content: center;
-  color: var(--color-text-sub);
+  gap: var(--space-2);
 }
 
 .socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--color-text-sub);
+  border-radius: var(--radius-md);
   transition:
     color 0.2s ease,
-    transform 0.2s ease;
+    background-color 0.2s ease;
 }
 
 .socials a:hover {
-  color: var(--color-primary);
-  transform: translateY(-2px);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+.cueWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--space-6);
 }
 
 .cue {
-  position: absolute;
-  left: 50%;
-  bottom: var(--space-6);
-  margin-left: -11px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
   color: var(--color-text-sub);
-  animation: bob 2.4s ease-in-out infinite;
   transition: color 0.2s ease;
 }
 
 .cue:hover {
-  color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.cueIcon {
+  animation: bob 2.4s ease-in-out infinite;
 }
 
 @keyframes bob {
@@ -135,22 +161,44 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(5px);
+    transform: translateY(3px);
   }
 }
 
 /* 세로가 짧은 화면에서는 내용과 겹치지 않게 숨긴다 */
 @media (max-height: 640px) {
-  .cue {
+  .cueWrap {
     display: none;
+  }
+
+  .inner {
+    padding-bottom: var(--space-12);
   }
 }
 
-@media (min-width: 768px) {
-  .name {
-    font-size: var(--fs-3xl);
+/* 모바일: 점 격자를 위쪽으로 옮기고 버튼을 나란히 꽉 채운다 */
+@media (max-width: 767px) {
+  .dots {
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 40% at 80% 8%,
+      #000 10%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 90% 40% at 80% 8%,
+      #000 10%,
+      transparent 100%
+    );
   }
-  .tagline {
-    font-size: var(--fs-lg);
+
+  .actions > a,
+  .actions > button {
+    flex: 1 1 0;
+    padding-inline: var(--space-3);
+  }
+
+  .socials {
+    flex-basis: 100%;
+    margin-left: calc(-1 * var(--space-3));
   }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
+  FiArrowUpRight,
   FiCheck,
   FiCopy,
   FiEdit3,
@@ -7,8 +8,7 @@ import {
   FiMail,
   FiPhone,
 } from 'react-icons/fi';
-import Container from '../components/common/Container';
-import SectionTitle from '../components/common/SectionTitle';
+import Section from '../components/common/Section';
 import Reveal from '../components/motion/Reveal';
 import { useCopy } from '../hooks/useCopy';
 import { useSound } from '../context/sound-context';
@@ -54,80 +54,92 @@ function Contact() {
   const t = ui[lang];
 
   return (
-    <section id="contact" className="section">
-      <Container>
-        <SectionTitle subtitle={t.contactSubtitle}>Contact</SectionTitle>
-        <Reveal className={styles.card}>
-          <p className={styles.lead}>{t.contactLead}</p>
-          <ul className={styles.links}>
+    <Section
+      id="contact"
+      index="05"
+      title="Contact"
+      subtitle={t.contactSubtitle}
+      inverted
+    >
+      <Reveal>
+        <p className={styles.lead}>{t.contactLead}</p>
+        <ul className={styles.list}>
+          <li className={styles.row}>
+            <a href={`mailto:${profile.email}`} className={styles.link}>
+              <FiMail size={20} aria-hidden="true" />
+              <span className={styles.value}>{profile.email}</span>
+            </a>
+            <CopyButton
+              value={profile.email}
+              message={t.copiedEmail}
+              label={t.copy}
+            />
+          </li>
+          {profile.phone && (
             <li className={styles.row}>
-              <a href={`mailto:${profile.email}`} className={styles.link}>
-                <FiMail size={20} />
-                <span>{profile.email}</span>
+              <a
+                href={`tel:${profile.phone.replace(/-/g, '')}`}
+                className={styles.link}
+              >
+                <FiPhone size={20} aria-hidden="true" />
+                <span className={styles.value}>{profile.phone}</span>
               </a>
               <CopyButton
-                value={profile.email}
-                message={t.copiedEmail}
+                value={profile.phone}
+                message={t.copiedPhone}
                 label={t.copy}
               />
             </li>
-            {profile.phone && (
-              <li className={styles.row}>
-                <a
-                  href={`tel:${profile.phone.replace(/-/g, '')}`}
-                  className={styles.link}
-                >
-                  <FiPhone size={20} />
-                  <span>{profile.phone}</span>
-                </a>
-                <CopyButton
-                  value={profile.phone}
-                  message={t.copiedPhone}
-                  label={t.copy}
-                />
-              </li>
-            )}
-            {profile.links.github && (
-              <li className={styles.row}>
-                <a
-                  href={profile.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.link}
-                >
-                  <FiGithub size={20} />
-                  <span>GitHub</span>
-                </a>
-              </li>
-            )}
-            {profile.links.blog ? (
-              <li className={styles.row}>
-                <a
-                  href={profile.links.blog}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.link}
-                >
-                  <FiEdit3 size={20} />
-                  <span>Blog</span>
-                </a>
-              </li>
-            ) : (
-              <li className={styles.row}>
-                <span
-                  className={`${styles.link} ${styles.pending}`}
-                  aria-disabled="true"
-                  title={t.blogPending}
-                >
-                  <FiEdit3 size={20} />
-                  <span>{t.blogPending}</span>
-                </span>
-              </li>
-            )}
-          </ul>
-        </Reveal>
-      </Container>
-    </section>
+          )}
+          {profile.links.github && (
+            <li className={styles.row}>
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                <FiGithub size={20} aria-hidden="true" />
+                <span className={styles.value}>GitHub</span>
+              </a>
+              <FiArrowUpRight
+                className={styles.external}
+                size={18}
+                aria-hidden="true"
+              />
+            </li>
+          )}
+          {profile.links.blog ? (
+            <li className={styles.row}>
+              <a
+                href={profile.links.blog}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                <FiEdit3 size={20} aria-hidden="true" />
+                <span className={styles.value}>Blog</span>
+              </a>
+              <FiArrowUpRight
+                className={styles.external}
+                size={18}
+                aria-hidden="true"
+              />
+            </li>
+          ) : (
+            <li className={styles.row}>
+              <span
+                className={`${styles.link} ${styles.pending}`}
+                aria-disabled="true"
+              >
+                <FiEdit3 size={20} aria-hidden="true" />
+                <span className={styles.value}>{t.blogPending}</span>
+              </span>
+            </li>
+          )}
+        </ul>
+      </Reveal>
+    </Section>
   );
 }
 

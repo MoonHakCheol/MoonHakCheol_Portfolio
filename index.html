@@ -19,9 +19,7 @@
       (function () {
         var theme = 'light';
         try {
-          var saved = localStorage.getItem('portfolio-theme');
-          if (saved === 'dark' || saved === 'light') theme = saved;
-          else if (matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+          if (localStorage.getItem('portfolio-theme') === 'dark') theme = 'dark';
         } catch (e) {}
         document.documentElement.dataset.theme = theme;
       })();

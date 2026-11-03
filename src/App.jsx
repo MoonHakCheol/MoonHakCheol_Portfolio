@@ -8,15 +8,12 @@ import ScrollProgress from './components/layout/ScrollProgress';
 import BackToTop from './components/layout/BackToTop';
 import CommandPalette from './components/CommandPalette';
 import EasterEgg from './components/EasterEgg';
-import { useSpotlightTracker } from './hooks/useSpotlightTracker';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
   const { pathname } = useLocation();
   const [paletteOpen, setPaletteOpen] = useState(false);
-
-  useSpotlightTracker();
 
   useEffect(() => {
     const handleKey = (e) => {

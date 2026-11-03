@@ -19,6 +19,8 @@
   font-weight: var(--fw-medium);
   color: var(--color-bg);
   background-color: var(--color-text);
+  /* 어두운 Contact 영역 위에서도 경계가 보이도록 */
+  border: 1px solid rgba(128, 128, 128, 0.5);
   border-radius: 999px;
   box-shadow: var(--shadow-lg);
 }

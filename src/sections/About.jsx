@@ -1,5 +1,4 @@
-import Container from '../components/common/Container';
-import SectionTitle from '../components/common/SectionTitle';
+import Section from '../components/common/Section';
 import Reveal from '../components/motion/Reveal';
 import { useLang, tr } from '../i18n/lang-context';
 import { ui } from '../i18n/ui';
@@ -11,24 +10,24 @@ function About() {
   const t = ui[lang];
 
   return (
-    <section id="about" className="section">
-      <Container>
-        <SectionTitle subtitle={t.aboutSubtitle}>About</SectionTitle>
-        <div className={styles.grid}>
-          <Reveal as="p" className={styles.intro}>
-            {tr(profile.intro, lang)}
+    <Section id="about" index="01" title="About" subtitle={t.aboutSubtitle}>
+      <Reveal as="p" className={styles.intro}>
+        {tr(profile.intro, lang)}
+      </Reveal>
+      <ul className={styles.info}>
+        {profile.info.map((item, i) => (
+          <Reveal
+            as="li"
+            key={tr(item.label, 'en')}
+            delay={0.08 + i * 0.06}
+            className={styles.row}
+          >
+            <span className={styles.label}>{tr(item.label, lang)}</span>
+            <span>{tr(item.value, lang)}</span>
           </Reveal>
-          <ul className={styles.info}>
-            {profile.info.map((item, i) => (
-              <Reveal as="li" key={tr(item.label, 'en')} delay={0.1 + i * 0.08}>
-                <span className={styles.label}>{tr(item.label, lang)}</span>
-                <span className={styles.value}>{tr(item.value, lang)}</span>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </Container>
-    </section>
+        ))}
+      </ul>
+    </Section>
   );
 }
 

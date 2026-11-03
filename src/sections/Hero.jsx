@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { FiChevronDown, FiGithub, FiMail } from 'react-icons/fi';
+import { FiArrowDown, FiGithub, FiMail } from 'react-icons/fi';
 import Container from '../components/common/Container';
 import Button from '../components/common/Button';
 import { EASE_OUT } from '../components/motion/easing';
@@ -31,6 +31,12 @@ function Hero() {
   const name = tr(profile.name, lang);
   const role = tr(profile.role, lang);
 
+  const highlighted = <span className={styles.highlight}>{name}</span>;
+  const lines =
+    lang === 'ko'
+      ? [`${role}를 준비하는`, <>{highlighted}입니다</>]
+      : [<>I&apos;m {highlighted},</>, `a ${role}`];
+
   const scrollTo = (e, id) => {
     e.preventDefault();
     goToSection(id);
@@ -45,25 +51,27 @@ function Hero() {
         <motion.p className={styles.greeting} {...enter(0)}>
           {t.heroGreeting}
         </motion.p>
-        <motion.h1 className={styles.name} {...enter(1)}>
-          {lang === 'ko' ? (
-            <>
-              {role}를 준비하는
-              <br />
-              <span className={styles.highlight}>{name}</span>입니다
-            </>
-          ) : (
-            <>
-              I&apos;m <span className={styles.highlight}>{name}</span>,
-              <br />a {role}
-            </>
-          )}
-        </motion.h1>
-        <motion.p className={styles.tagline} {...enter(2)}>
+
+        <h1 key={lang} className={styles.name}>
+          {lines.map((line, i) => (
+            <span key={i} className={styles.lineMask}>
+              <motion.span
+                className={styles.line}
+                initial={{ y: '105%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 + i * 0.1, ease: EASE_OUT }}
+              >
+                {line}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        <motion.p className={styles.tagline} {...enter(3)}>
           {tr(profile.tagline, lang)}
         </motion.p>
 
-        <motion.div className={styles.actions} {...enter(3)}>
+        <motion.div className={styles.actions} {...enter(4)}>
           <Button
             as="a"
             href="/#projects"
@@ -91,33 +99,39 @@ function Hero() {
               {t.heroResumePending}
             </Button>
           )}
-        </motion.div>
-
-        <motion.div className={styles.socials} {...enter(4)}>
-          {profile.links.github && (
+          <div className={styles.socials}>
+            {profile.links.github && (
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <FiGithub size={20} />
+              </a>
+            )}
             <a
-              href={profile.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
+              href={`mailto:${profile.email}`}
+              aria-label="Email"
+              title="Email"
             >
-              <FiGithub size={22} />
+              <FiMail size={20} />
             </a>
-          )}
-          <a href={`mailto:${profile.email}`} aria-label="Email">
-            <FiMail size={22} />
-          </a>
+          </div>
         </motion.div>
       </Container>
 
-      <a
-        href="/#about"
-        className={styles.cue}
-        aria-label={t.scrollCue}
-        onClick={(e) => scrollTo(e, 'about')}
-      >
-        <FiChevronDown size={22} />
-      </a>
+      <Container className={styles.cueWrap}>
+        <a
+          href="/#about"
+          className={styles.cue}
+          onClick={(e) => scrollTo(e, 'about')}
+        >
+          <FiArrowDown size={16} className={styles.cueIcon} aria-hidden="true" />
+          {t.scrollCue}
+        </a>
+      </Container>
     </section>
   );
 }

@@ -28,6 +28,7 @@ function ProjectDetail() {
 
   const { title, summary, tags, links, period, role, problem, learned } =
     project;
+  const summaryText = tr(summary, lang);
   const problemText = tr(problem, lang);
   const learnedText = tr(learned, lang);
 
@@ -39,52 +40,57 @@ function ProjectDetail() {
         </Link>
 
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.summary}>{tr(summary, lang)}</p>
+        <p className={styles.summary}>{summaryText || t.summaryPending}</p>
 
-        <div className={styles.tags}>
-          {tags.length > 0 ? (
-            tags.map((tag) => <Tag key={tr(tag, 'en')}>{tr(tag, lang)}</Tag>)
-          ) : (
-            <span className={styles.pending}>{t.techPending}</span>
-          )}
-        </div>
-
-        <div className={styles.links}>
-          {links.demo && (
-            <a href={links.demo} target="_blank" rel="noopener noreferrer">
-              <FiExternalLink /> Live Demo
-            </a>
-          )}
-          {links.github && (
-            <a href={links.github} target="_blank" rel="noopener noreferrer">
-              <FiGithub /> GitHub
-            </a>
-          )}
-          {!links.demo && !links.github && (
-            <span className={styles.pending}>{t.detailLinkPending}</span>
-          )}
-        </div>
+        {(links.demo || links.github) && (
+          <div className={styles.links}>
+            {links.demo && (
+              <a href={links.demo} target="_blank" rel="noopener noreferrer">
+                <FiExternalLink /> Live Demo
+              </a>
+            )}
+            {links.github && (
+              <a href={links.github} target="_blank" rel="noopener noreferrer">
+                <FiGithub /> GitHub
+              </a>
+            )}
+          </div>
+        )}
 
         <dl className={styles.meta}>
           {period && (
-            <div>
+            <div className={styles.row}>
               <dt>{t.detailDuration}</dt>
               <dd>{tr(period, lang)}</dd>
             </div>
           )}
           {role && (
-            <div>
+            <div className={styles.row}>
               <dt>{t.detailRole}</dt>
               <dd>{tr(role, lang)}</dd>
             </div>
           )}
-          <div>
+          <div className={styles.row}>
+            <dt>{t.detailTech}</dt>
+            <dd>
+              {tags.length > 0 ? (
+                <div className={styles.tags}>
+                  {tags.map((tag) => (
+                    <Tag key={tr(tag, 'en')}>{tr(tag, lang)}</Tag>
+                  ))}
+                </div>
+              ) : (
+                <span className={styles.pendingText}>{t.techPending}</span>
+              )}
+            </dd>
+          </div>
+          <div className={styles.row}>
             <dt>{t.detailProblem}</dt>
             <dd className={problemText ? '' : styles.pendingText}>
               {problemText || t.detailComingSoon}
             </dd>
           </div>
-          <div>
+          <div className={styles.row}>
             <dt>{t.detailLearned}</dt>
             <dd className={learnedText ? '' : styles.pendingText}>
               {learnedText || t.detailComingSoon}

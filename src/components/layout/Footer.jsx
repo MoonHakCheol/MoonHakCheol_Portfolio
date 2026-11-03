@@ -8,9 +8,9 @@ function Footer() {
   const { lang } = useLang();
   const year = new Date().getFullYear();
   return (
-    <footer className={styles.footer}>
-      <Container>
-        <p className={styles.text}>
+    <footer className={`inverted ${styles.footer}`}>
+      <Container className={styles.inner}>
+        <p>
           © {year} {tr(profile.name, lang)}. All rights reserved.
         </p>
         <p className={styles.tip}>{ui[lang].footerTip}</p>

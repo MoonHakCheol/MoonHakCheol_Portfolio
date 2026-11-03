@@ -1,21 +1,19 @@
 .footer {
-  padding-block: var(--space-8);
+  padding-block: var(--space-6);
   border-top: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-}
-
-.text {
-  text-align: center;
   font-size: var(--fs-sm);
-  color: var(--color-text-sub);
 }
 
+.inner {
+  color: var(--color-text-sub);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* 단축키 안내는 키보드가 있는 넓은 화면에서만 */
 .tip {
   display: none;
-  margin-top: var(--space-1);
-  text-align: center;
-  font-size: var(--fs-xs);
-  color: var(--color-text-sub);
 }
 
 @media (min-width: 1024px) {

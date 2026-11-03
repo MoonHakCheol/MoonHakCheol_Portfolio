@@ -1,5 +1,5 @@
 // 경력 · 활동 · 교육 (타임라인) — 최신순. 다국어 필드는 { ko, en }.
-// description 안의 **텍스트** 는 굵은 빨간색으로 강조됩니다.
+// description 안의 **텍스트** 는 굵게 강조됩니다.
 export const experience = [
   {
     period: {
@@ -19,7 +19,6 @@ export const experience = [
     },
     highlights: [
       {
-        icon: 'server',
         label: { ko: '인프라', en: 'Infrastructure' },
         desc: {
           ko: 'Ubuntu Desktop 26.04 서버 구축 및 유지보수',
@@ -27,7 +26,6 @@ export const experience = [
         },
       },
       {
-        icon: 'globe',
         label: { ko: '웹 서비스', en: 'Web Services' },
         desc: {
           ko: '점포 매출 통계 대시보드, 사내 미팅 일정 조율 사이트, 업무 관리 사이트 개발',
@@ -35,7 +33,6 @@ export const experience = [
         },
       },
       {
-        icon: 'zap',
         label: { ko: '자동화 · 데이터', en: 'Automation & Data' },
         desc: {
           ko: 'AI 기반 네이버 블로그 자동 발행 및 업무 자동화 프로그램(다인아이앤씨), TikTok 크롤링 수집기 개발',
@@ -73,6 +70,11 @@ export const experience = [
           ko: '웹캠으로 사용자의 공부 상태를 감지·모니터링하여 집중 학습을 돕는 서비스',
           en: "A service that uses a webcam to detect and monitor the user's study state, helping them focus",
         },
+      },
+      {
+        name: 'Jambox',
+        role: { ko: '팀장 · 개발', en: 'Team Lead · Development' },
+        period: { ko: '2026년 2학기', en: '2026 Fall' },
       },
     ],
   },

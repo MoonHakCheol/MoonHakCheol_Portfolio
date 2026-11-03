@@ -15,13 +15,14 @@
 
 .timeline {
   display: grid;
-  gap: var(--space-8);
-  border-left: 2px solid var(--color-border);
+  gap: var(--space-12);
   padding-left: var(--space-6);
+  border-left: 2px solid var(--color-border);
 }
 
 .item {
   position: relative;
+  min-width: 0;
 }
 
 .item::before {
@@ -33,28 +34,29 @@
   height: 10px;
   border-radius: 50%;
   background-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-bg);
 }
 
 .period {
   font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
   color: var(--color-text-sub);
-  font-weight: var(--fw-medium);
-}
-
-.content {
-  margin-top: var(--space-2);
 }
 
 .title {
-  font-size: var(--fs-lg);
+  margin-top: var(--space-1);
+  font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
 }
 
 .toggle {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  min-height: 40px;
   font-weight: inherit;
+  letter-spacing: inherit;
   text-align: left;
   transition: color 0.2s ease;
 }
@@ -69,167 +71,91 @@
   color: var(--color-text-sub);
 }
 
-/* 펼침 애니메이션 중 카드 테두리가 잘리지 않도록 여백을 둔다 */
-.collapse {
-  overflow: hidden;
-  margin-inline: -4px;
-  padding-inline: 4px;
-  padding-bottom: 4px;
+.org {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-sub);
 }
 
-.org {
-  color: var(--color-primary);
-  font-size: var(--fs-sm);
-  margin-top: var(--space-1);
+.collapse {
+  overflow: hidden;
 }
 
 .logos {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-3);
   margin-top: var(--space-4);
-  padding: var(--space-4) var(--space-6);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
 }
 
 /* 로고가 검은 글자라 다크 모드에서도 보이도록 흰 바탕을 유지한다 */
 .logo {
-  height: 48px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   padding: var(--space-1) var(--space-2);
   background-color: #fff;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 
 .desc {
+  max-width: 40em;
   margin-top: var(--space-4);
   color: var(--color-text-sub);
-  font-size: var(--fs-sm);
 }
 
-/* 강조: 굵은 빨간색 */
 .highlight {
-  color: var(--color-danger);
-  font-weight: var(--fw-bold);
-}
-
-/* 담당 업무 항목 카드 */
-.highlights {
-  margin-top: var(--space-6);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-}
-
-.highlightItem {
-  display: flex;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}
-
-.hIcon {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  color: var(--color-primary);
-  background-color: var(--color-primary-soft);
-}
-
-.hLabel {
-  display: block;
-  font-size: var(--fs-base);
-  font-weight: var(--fw-bold);
   color: var(--color-text);
+  font-weight: var(--fw-semibold);
 }
 
-.hDesc {
-  margin-top: var(--space-1);
+.groupLabel {
+  display: block;
+  margin-top: var(--space-6);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-sub);
+}
+
+.rows {
+  margin-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.row {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowLabel {
+  font-weight: var(--fw-semibold);
+}
+
+.rowText {
   font-size: var(--fs-sm);
   color: var(--color-text-sub);
-  line-height: var(--lh-base);
 }
 
-@media (min-width: 900px) {
-  .highlights {
-    grid-template-columns: repeat(3, 1fr);
+.rowMeta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-sub);
+}
+
+.rowText + .rowMeta {
+  margin-top: var(--space-1);
+}
+
+@media (min-width: 600px) {
+  .row {
+    grid-template-columns: 140px minmax(0, 1fr);
     gap: var(--space-4);
   }
-}
-
-/* 대학교 진행 프로젝트 */
-.projects {
-  margin-top: var(--space-6);
-}
-
-.projectsLabel {
-  display: block;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
-  color: var(--color-primary);
-  margin-bottom: var(--space-3);
-}
-
-.projectList {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.projectItem {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}
-
-.pHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-
-.pName {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-bold);
-  color: var(--color-text);
-}
-
-.pDesc {
-  font-size: var(--fs-sm);
-  color: var(--color-text-sub);
-  line-height: var(--lh-base);
-}
-
-.pRole {
-  align-self: flex-start;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  color: var(--color-text-sub);
-  border: 1px solid var(--color-border);
-  padding: var(--space-1) var(--space-3);
-  border-radius: 999px;
-}
-
-.pPeriod {
-  flex-shrink: 0;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  color: var(--color-primary);
-  background-color: var(--color-primary-soft);
-  padding: var(--space-1) var(--space-3);
-  border-radius: 999px;
 }

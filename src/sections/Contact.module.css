@@ -1,85 +1,77 @@
-.card {
-  text-align: center;
-  max-width: 560px;
-  margin-inline: auto;
-}
-
 .lead {
-  font-size: var(--fs-lg);
-  color: var(--color-text);
+  max-width: 24em;
   margin-bottom: var(--space-8);
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
 }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  align-items: center;
+.list {
+  border-top: 1px solid var(--color-border);
 }
 
 .row {
   display: flex;
+  align-items: center;
   gap: var(--space-2);
-  width: 100%;
-  max-width: 340px;
+  min-height: 64px;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.row .link {
+.link {
   flex: 1;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 64px;
+  font-weight: var(--fw-medium);
+  transition: color 0.2s ease;
+}
+
+a.link:hover {
+  color: var(--color-primary);
+}
+
+/* 긴 이메일도 좁은 화면에서 줄바꿈되도록 */
+.value {
+  min-width: 0;
+  word-break: break-all;
 }
 
 .copy {
   flex-shrink: 0;
-  width: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 44px;
+  height: 44px;
   color: var(--color-text-sub);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   transition:
     color 0.2s ease,
-    border-color 0.2s ease;
+    background-color 0.2s ease;
 }
 
 .copy:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: var(--color-text);
+  background-color: var(--color-surface);
 }
 
 .copied,
 .copied:hover {
   color: var(--color-success);
-  border-color: var(--color-success);
 }
 
-.link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-6);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-weight: var(--fw-medium);
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
-  justify-content: center;
-}
-
-.link:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+.external {
+  flex-shrink: 0;
+  margin-right: 13px;
+  color: var(--color-text-sub);
 }
 
 /* 준비 중 (비활성) */
 .pending {
   color: var(--color-text-sub);
-  border-style: dashed;
   cursor: not-allowed;
-}
-.pending:hover {
-  border-color: var(--color-border);
-  color: var(--color-text-sub);
 }

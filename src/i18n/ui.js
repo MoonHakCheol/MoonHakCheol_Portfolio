@@ -2,6 +2,9 @@
 export const ui = {
   ko: {
     // Header
+    navLabel: '주요 메뉴',
+    menuOpen: '메뉴 열기',
+    menuClose: '메뉴 닫기',
     resume: '이력서',
     resumePending: '이력서 준비 중',
     soundOn: '사운드 끄기',
@@ -40,16 +43,16 @@ export const ui = {
     expCollapse: '접기',
     // Project card
     cardDetails: '자세히',
+    summaryPending: '프로젝트 설명 준비 중',
     techPending: '기술 스택 준비 중',
-    linkPending: '링크 준비 중',
     // Project detail
     detailBack: '목록으로',
     detailDuration: '기간 / 인원',
     detailRole: '역할',
+    detailTech: '사용 기술',
     detailProblem: '문제와 해결',
     detailLearned: '배운 점',
     detailComingSoon: '내용을 채울 예정입니다.',
-    detailLinkPending: '데모 · 저장소 링크 준비 중',
     detailNotFound: '프로젝트를 찾을 수 없습니다.',
     // Contact
     contactLead: '함께 성장할 기회를 찾고 있습니다. 언제든 연락 주세요!',
@@ -65,6 +68,9 @@ export const ui = {
     easterEgg: '🎉 발견하셨네요! 끝까지 살펴봐 주셔서 감사합니다.',
   },
   en: {
+    navLabel: 'Main menu',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
     resume: 'Resume',
     resumePending: 'Resume coming soon',
     soundOn: 'Turn sound off',
@@ -97,15 +103,15 @@ export const ui = {
     expExpand: 'Expand',
     expCollapse: 'Collapse',
     cardDetails: 'Details',
+    summaryPending: 'Description coming soon',
     techPending: 'Tech stack TBD',
-    linkPending: 'Links TBD',
     detailBack: 'Back to list',
     detailDuration: 'Duration / Team',
     detailRole: 'Role',
+    detailTech: 'Tech stack',
     detailProblem: 'Problem & Solution',
     detailLearned: 'What I learned',
     detailComingSoon: 'Coming soon.',
-    detailLinkPending: 'Demo · repo links TBD',
     detailNotFound: 'Project not found.',
     contactLead: "I'm looking for opportunities to grow together. Feel free to reach out anytime!",
     blogPending: 'Blog coming soon',
