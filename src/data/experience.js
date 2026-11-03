@@ -14,40 +14,32 @@ export const experience = [
       { src: '/logos/dain-inc.png', alt: '다인아이앤씨' },
     ],
     description: {
-      ko: '**IT 운영 지원**과 **사내 업무 자동화·웹 개발**을 담당하고 있습니다.',
-      en: 'I handle **IT operations support** and **in-house automation & web development**.',
+      ko: '**사내 서버 구축**부터 **업무 자동화 프로그램**과 **웹 서비스 개발**까지 맡아 진행하고 있습니다.',
+      en: 'I take on everything from **in-house server setup** to **automation programs** and **web service development**.',
     },
     highlights: [
       {
-        icon: 'tool',
-        label: { ko: 'IT 운영 지원', en: 'IT Operations Support' },
+        icon: 'server',
+        label: { ko: '인프라', en: 'Infrastructure' },
         desc: {
-          ko: '씨트롤·K-Remote 기반 현장 장애 대응, 키오스크 설정·유지보수 보조',
-          en: 'On-site incident response with C-troll/K-Remote, kiosk setup & maintenance support',
+          ko: 'Ubuntu Desktop 26.04 서버 구축 및 유지보수',
+          en: 'Set up and maintain an Ubuntu Desktop 26.04 server',
         },
       },
       {
-        icon: 'database',
-        label: { ko: '운영 데이터 관리', en: 'Operations Data Management' },
+        icon: 'globe',
+        label: { ko: '웹 서비스', en: 'Web Services' },
         desc: {
-          ko: 'VAN 정보 정리 및 Excel 기반 데이터·업무 문서 관리',
-          en: 'Organizing VAN data and managing Excel-based data & business documents',
+          ko: '점포 매출 통계 대시보드, 사내 미팅 일정 조율 사이트, 업무 관리 사이트 개발',
+          en: 'Built a store sales analytics dashboard, an internal meeting scheduling site and a work management site',
         },
       },
       {
         icon: 'zap',
-        label: { ko: 'AI 콘텐츠 워크플로우', en: 'AI Content Workflow' },
+        label: { ko: '자동화 · 데이터', en: 'Automation & Data' },
         desc: {
-          ko: 'Gemini 초안 자동화 → ERP·Claude Code 연동으로 고도화한 네이버 블로그 콘텐츠 운영',
-          en: 'Naver blog content pipeline, from Gemini draft automation to ERP & Claude Code integration',
-        },
-      },
-      {
-        icon: 'server',
-        label: { ko: '서비스·인프라 개발', en: 'Service & Infra Development' },
-        desc: {
-          ko: 'ERP·미팅 관리·작업일지 사이트 및 자동 발행 프로그램 개발, Ubuntu 서버 구축·운영',
-          en: 'Built ERP, meeting-management and worklog sites plus an auto-publishing program; set up and ran Ubuntu servers',
+          ko: 'AI 기반 네이버 블로그 자동 발행 및 업무 자동화 프로그램(다인아이앤씨), TikTok 크롤링 수집기 개발',
+          en: 'Built an AI-powered Naver blog auto-publishing and work automation program (Dain I&C) and a TikTok crawler',
         },
       },
     ],

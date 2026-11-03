@@ -1,4 +1,4 @@
-import { FiTool, FiDatabase, FiZap, FiServer } from 'react-icons/fi';
+import { FiGlobe, FiZap, FiServer } from 'react-icons/fi';
 import Container from '../components/common/Container';
 import SectionTitle from '../components/common/SectionTitle';
 import { useLang, tr } from '../i18n/lang-context';
@@ -7,8 +7,7 @@ import { experience } from '../data/experience';
 import styles from './Experience.module.css';
 
 const ICONS = {
-  tool: FiTool,
-  database: FiDatabase,
+  globe: FiGlobe,
   zap: FiZap,
   server: FiServer,
 };
