@@ -1,5 +1,15 @@
-import { useId, useRef, useState } from 'react';
-import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
+import { useEffect, useId, useRef, useState } from 'react';
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'motion/react';
 import { FiArrowUpRight, FiChevronDown } from 'react-icons/fi';
 import Section from '../components/common/Section';
 import Reveal from '../components/motion/Reveal';
@@ -148,17 +158,40 @@ function Experience() {
   const wrapRef = useRef(null);
   const { lang } = useLang();
   const t = ui[lang];
-  // 선은 아래에서 위로 채운다. 목록을 읽는 동안 올라오는 모습이 보이도록
-  // 목록 전체를 지나가는 구간에 걸쳐 진행률을 잡는다.
+  const reduceMotion = useReducedMotion();
+
+  // 목록이 보이기 시작하면 선이 아래에서 위로 저절로 채워진다.
+  const entered = useInView(wrapRef, {
+    once: true,
+    margin: '0px 0px -40% 0px',
+  });
+  const fill = useMotionValue(0);
+
+  useEffect(() => {
+    if (!entered) return undefined;
+    if (reduceMotion) {
+      fill.set(1);
+      return undefined;
+    }
+    const controls = animate(fill, 1, { duration: 1.2, ease: EASE_OUT });
+    return () => controls.stop();
+  }, [entered, reduceMotion, fill]);
+
+  // 스크롤을 내리면 파란 구간의 위쪽 끝이 화면에서 같이 내려간다.
+  // 시작(150px)보다 끝(420px)을 아래에 둬야 끝점이 화면에서 아래로 움직인다.
+  // 간격은 항목을 모두 접은 목록 높이보다 작아야 방향이 뒤집히지 않는다.
   const { scrollYProgress } = useScroll({
     target: wrapRef,
-    offset: ['start 0.8', 'end 0.7'],
+    offset: ['start 150px', 'end 420px'],
   });
-  const scaleY = useSpring(scrollYProgress, {
+  const progress = useSpring(scrollYProgress, {
     stiffness: 160,
     damping: 30,
     restDelta: 0.001,
   });
+  const scaleY = useTransform([fill, progress], ([f, p]) =>
+    Math.max(0, Math.min(f, 1 - p)),
+  );
 
   return (
     <Section

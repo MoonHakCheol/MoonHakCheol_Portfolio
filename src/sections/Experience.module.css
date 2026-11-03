@@ -2,7 +2,7 @@
   position: relative;
 }
 
-/* 스크롤을 내리면 아래에서 위로 채워지는 타임라인 선 */
+/* 아래에서 위로 채워지고, 스크롤을 내리면 위쪽 끝이 같이 내려가는 타임라인 선 */
 .rail {
   position: absolute;
   top: 0;

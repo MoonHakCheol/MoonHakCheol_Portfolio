@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToHash from './components/layout/ScrollToHash';
-import ScrollProgress from './components/layout/ScrollProgress';
 import BackToTop from './components/layout/BackToTop';
 import CommandPalette from './components/CommandPalette';
 import EasterEgg from './components/EasterEgg';
@@ -29,7 +28,6 @@ function App() {
   return (
     <>
       <ScrollToHash />
-      <ScrollProgress />
       <Header onOpenPalette={() => setPaletteOpen(true)} />
       <main>
         <motion.div
