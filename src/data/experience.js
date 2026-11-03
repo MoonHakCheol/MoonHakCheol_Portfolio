@@ -95,12 +95,12 @@ export const experience = [
     },
     projects: [
       {
-        name: 'CarScope',
-        role: { ko: '팀장 · 개발 총괄', en: 'Team Lead · Development Lead' },
-        period: { ko: '2025년 2학기', en: '2025 Fall' },
+        name: 'Jambox',
+        role: { ko: '팀장 · 개발', en: 'Team Lead · Development' },
+        period: { ko: '2026년 2학기', en: '2026 Fall' },
         desc: {
-          ko: '차량 관련 최저가와 주변 최저가 주차장을 한곳에서 검색·비교하는 서비스',
-          en: 'A service to search and compare the best car-related prices and nearby low-cost parking in one place',
+          ko: '오락·레저 활동을 찾아주고 추천해 주는 사이트',
+          en: 'A site that helps you find and get recommendations for entertainment and leisure activities',
         },
       },
       {
@@ -113,12 +113,12 @@ export const experience = [
         },
       },
       {
-        name: 'Jambox',
-        role: { ko: '팀장 · 개발', en: 'Team Lead · Development' },
-        period: { ko: '2026년 2학기', en: '2026 Fall' },
+        name: 'CarScope',
+        role: { ko: '팀장 · 개발 총괄', en: 'Team Lead · Development Lead' },
+        period: { ko: '2025년 2학기', en: '2025 Fall' },
         desc: {
-          ko: '오락·레저 활동을 찾아주고 추천해 주는 사이트',
-          en: 'A site that helps you find and get recommendations for entertainment and leisure activities',
+          ko: '차량 관련 최저가와 주변 최저가 주차장을 한곳에서 검색·비교하는 서비스',
+          en: 'A service to search and compare the best car-related prices and nearby low-cost parking in one place',
         },
       },
     ],
