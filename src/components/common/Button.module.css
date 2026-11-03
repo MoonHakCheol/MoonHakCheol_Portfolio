@@ -11,15 +11,16 @@
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-solid);
   color: #fff;
 }
 .primary:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-primary-solid-hover);
 }
 
 .secondary {
@@ -38,9 +39,13 @@
   cursor: not-allowed;
 }
 .primary:disabled:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-solid);
 }
 .secondary:disabled:hover {
   border-color: var(--color-border);
   color: var(--color-text);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
 }

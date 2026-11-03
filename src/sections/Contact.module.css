@@ -17,6 +17,43 @@
   align-items: center;
 }
 
+.row {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 340px;
+}
+
+.row .link {
+  flex: 1;
+  min-width: 0;
+}
+
+.copy {
+  flex-shrink: 0;
+  width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-sub);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.copy:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.copied,
+.copied:hover {
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
 .link {
   display: inline-flex;
   align-items: center;
@@ -28,7 +65,6 @@
   transition:
     border-color 0.2s ease,
     color 0.2s ease;
-  min-width: 260px;
   justify-content: center;
 }
 

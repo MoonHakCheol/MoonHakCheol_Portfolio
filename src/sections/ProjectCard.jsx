@@ -11,7 +11,7 @@ function ProjectCard({ project }) {
   const t = ui[lang];
 
   return (
-    <article className={styles.card}>
+    <article className={`spotlight ${styles.card}`}>
       <Link to={`/projects/${id}`} className={styles.thumb}>
         {thumbnail ? (
           <img src={thumbnail} alt={`${title} 미리보기`} loading="lazy" />

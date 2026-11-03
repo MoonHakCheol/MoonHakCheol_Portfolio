@@ -1,23 +1,31 @@
 .card {
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  overflow: hidden;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }
 
 .thumb {
+  display: block;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   background-color: var(--color-border);
+}
+.thumb img,
+.placeholder {
+  transition: transform 0.4s ease;
+}
+.card:hover .thumb img,
+.card:hover .placeholder {
+  transform: scale(1.03);
 }
 .thumb img {
   width: 100%;
@@ -33,7 +41,7 @@
   justify-content: center;
   color: var(--color-text-sub);
   font-weight: var(--fw-medium);
-  background: linear-gradient(135deg, var(--color-primary-soft), #fff);
+  background: linear-gradient(135deg, var(--color-primary-soft), var(--color-surface));
 }
 
 .body {
@@ -81,6 +89,12 @@
 }
 .link:hover {
   color: var(--color-primary-hover);
+}
+.link svg {
+  transition: transform 0.2s ease;
+}
+.link:hover svg {
+  transform: translateX(2px);
 }
 
 /* 준비 중 표기 */

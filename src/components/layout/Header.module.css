@@ -3,9 +3,17 @@
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--header-bg);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.scrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .inner {
@@ -13,70 +21,111 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-4);
 }
 
 .logo {
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
+  white-space: nowrap;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-4);
 }
 
 .navList {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-1);
 }
 
-.navList a {
+.navLink {
+  position: relative;
+  display: block;
+  padding: var(--space-1) var(--space-3);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
   color: var(--color-text-sub);
+  border-radius: 999px;
   transition: color 0.2s ease;
 }
-.navList a:hover,
-.navList a.active {
+
+.navLink:hover,
+.navLink.active {
   color: var(--color-primary);
+}
+
+.navPill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--color-primary-soft);
+}
+
+.navLabel {
+  position: relative;
 }
 
 .resumeBtn {
   min-height: 38px;
   padding-inline: var(--space-4);
   font-size: var(--fs-sm);
+  white-space: nowrap;
 }
 
 .controls {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
-.soundToggle,
-.langToggle {
+.iconToggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 38px;
   height: 38px;
   border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   color: var(--color-text-sub);
   transition:
     color 0.2s ease,
     background-color 0.2s ease;
 }
-.soundToggle:hover,
-.langToggle:hover {
+
+.iconToggle:hover {
   color: var(--color-primary);
   background-color: var(--color-primary-soft);
 }
 
-.langToggle {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+.paletteBtn {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  height: 32px;
+  margin-right: var(--space-2);
+  padding-inline: var(--space-2);
+  color: var(--color-text-sub);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.paletteBtn:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.kbd {
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  white-space: nowrap;
 }
 
 .menuToggle {
@@ -84,10 +133,24 @@
   color: var(--color-text);
 }
 
+/* 태블릿: 공간이 좁으므로 이력서 버튼은 Hero 에만 둔다 */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .resumeBtn {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .paletteBtn {
+    display: inline-flex;
+  }
+}
+
 /* 모바일 */
 @media (max-width: 767px) {
   .menuToggle {
     display: inline-flex;
+    margin-left: var(--space-1);
   }
 
   .nav {
@@ -119,7 +182,6 @@
   .navList {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-4);
   }
 
   .resumeBtn {

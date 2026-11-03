@@ -14,6 +14,19 @@
     <meta property="og:description" content="신입 프론트엔드 개발자 문학철의 포트폴리오" />
     <meta property="og:image" content="/og-image.png" />
 
+    <script>
+      // 첫 페인트 전에 테마를 정해 깜빡임을 막는다
+      (function () {
+        var theme = 'light';
+        try {
+          var saved = localStorage.getItem('portfolio-theme');
+          if (saved === 'dark' || saved === 'light') theme = saved;
+          else if (matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+        } catch (e) {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+
     <!-- Pretendard 웹폰트 -->
     <link
       rel="stylesheet"

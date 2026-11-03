@@ -9,3 +9,17 @@
   font-size: var(--fs-sm);
   color: var(--color-text-sub);
 }
+
+.tip {
+  display: none;
+  margin-top: var(--space-1);
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--color-text-sub);
+}
+
+@media (min-width: 1024px) {
+  .tip {
+    display: block;
+  }
+}

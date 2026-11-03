@@ -34,3 +34,49 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+/* 한글이 단어 중간에서 끊기지 않게 */
+body {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 카드 테두리가 커서 근처만 은은하게 밝아지는 효과 (useSpotlightTracker) */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    var(--color-primary),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+@media (hover: hover) {
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}

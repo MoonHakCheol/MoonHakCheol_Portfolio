@@ -5,18 +5,16 @@
 .title {
   font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
-  position: relative;
-  display: inline-block;
 }
 
-.title::after {
-  content: '';
+.line {
   display: block;
   width: 40px;
   height: 3px;
   margin-top: var(--space-2);
   background-color: var(--color-primary);
   border-radius: 2px;
+  transform-origin: 0 50%;
 }
 
 .subtitle {

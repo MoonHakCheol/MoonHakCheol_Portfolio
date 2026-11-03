@@ -1,9 +1,21 @@
 import { useState } from 'react';
-import { FiMenu, FiX, FiVolume2, FiVolumeX } from 'react-icons/fi';
+import { motion, useMotionValueEvent, useScroll } from 'motion/react';
+import {
+  FiMenu,
+  FiMoon,
+  FiSearch,
+  FiSun,
+  FiVolume2,
+  FiVolumeX,
+  FiX,
+} from 'react-icons/fi';
 import Container from '../common/Container';
 import Button from '../common/Button';
+import { SPRING_SNAPPY } from '../motion/easing';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
+import { useSectionNav } from '../../hooks/useSectionNav';
 import { useSound } from '../../context/sound-context';
+import { useTheme } from '../../context/theme-context';
 import { useLang, tr } from '../../i18n/lang-context';
 import { ui } from '../../i18n/ui';
 import { playSound } from '../../utils/sound';
@@ -19,19 +31,28 @@ const NAV_ITEMS = [
 ];
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
+const IS_MAC = /Mac|iPhone|iPad/.test(navigator.platform);
 
-function Header() {
+function Header({ onOpenPalette }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const activeId = useScrollSpy(SECTION_IDS, 80);
+  const goToSection = useSectionNav();
   const { enabled, toggle, play } = useSound();
+  const { theme, toggle: toggleTheme } = useTheme();
   const { lang, toggle: toggleLang } = useLang();
+  const { scrollY } = useScroll();
   const t = ui[lang];
 
-  const closeMenu = () => setMenuOpen(false);
+  useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 8));
 
-  const handleNavClick = () => {
+  const handleNavClick = (e, id) => {
+    // 새 탭으로 열기 등 기본 동작은 그대로 둔다
+    if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+    e.preventDefault();
     play('click');
-    closeMenu();
+    setMenuOpen(false);
+    goToSection(id);
   };
 
   const handleSoundToggle = () => {
@@ -45,10 +66,21 @@ function Header() {
     toggleLang();
   };
 
+  const handleThemeToggle = () => {
+    play('click');
+    toggleTheme();
+  };
+
+  const themeLabel = theme === 'dark' ? t.themeToLight : t.themeToDark;
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <Container className={styles.inner}>
-        <a href="#home" className={styles.logo} onClick={handleNavClick}>
+        <a
+          href="/#home"
+          className={styles.logo}
+          onClick={(e) => handleNavClick(e, 'home')}
+        >
           {tr(profile.name, lang)}
         </a>
 
@@ -57,17 +89,28 @@ function Header() {
           aria-label="주요 메뉴"
         >
           <ul className={styles.navList}>
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={activeId === item.id ? styles.active : ''}
-                  onClick={handleNavClick}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const active = activeId === item.id;
+              return (
+                <li key={item.id}>
+                  <a
+                    href={`/#${item.id}`}
+                    className={`${styles.navLink} ${active ? styles.active : ''}`}
+                    aria-current={active ? 'true' : undefined}
+                    onClick={(e) => handleNavClick(e, item.id)}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active"
+                        className={styles.navPill}
+                        transition={SPRING_SNAPPY}
+                      />
+                    )}
+                    <span className={styles.navLabel}>{item.label}</span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           {profile.resumeReady ? (
             <Button
@@ -95,7 +138,18 @@ function Header() {
         <div className={styles.controls}>
           <button
             type="button"
-            className={styles.langToggle}
+            className={styles.paletteBtn}
+            onClick={onOpenPalette}
+            aria-label={t.paletteOpen}
+            title={t.paletteOpen}
+          >
+            <FiSearch size={15} aria-hidden="true" />
+            <kbd className={styles.kbd}>{IS_MAC ? '⌘K' : 'Ctrl K'}</kbd>
+          </button>
+
+          <button
+            type="button"
+            className={styles.iconToggle}
             onClick={handleLangToggle}
             aria-label={t.langToggle}
             title={t.langToggle}
@@ -105,13 +159,23 @@ function Header() {
 
           <button
             type="button"
-            className={styles.soundToggle}
+            className={styles.iconToggle}
+            onClick={handleThemeToggle}
+            aria-label={themeLabel}
+            title={themeLabel}
+          >
+            {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
+          </button>
+
+          <button
+            type="button"
+            className={styles.iconToggle}
             onClick={handleSoundToggle}
             aria-label={enabled ? t.soundOn : t.soundOff}
             aria-pressed={enabled}
             title={enabled ? t.soundOn : t.soundOff}
           >
-            {enabled ? <FiVolume2 size={20} /> : <FiVolumeX size={20} />}
+            {enabled ? <FiVolume2 size={18} /> : <FiVolumeX size={18} />}
           </button>
 
           <button

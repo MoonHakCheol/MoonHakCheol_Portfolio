@@ -1,3 +1,18 @@
+.wrap {
+  position: relative;
+}
+
+/* 스크롤에 따라 채워지는 타임라인 선 */
+.rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background-color: var(--color-primary);
+  transform-origin: 50% 0;
+}
+
 .timeline {
   display: grid;
   gap: var(--space-8);
@@ -35,6 +50,33 @@
   font-weight: var(--fw-bold);
 }
 
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: inherit;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.toggle:hover {
+  color: var(--color-primary);
+}
+
+.chevron {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-text-sub);
+}
+
+/* 펼침 애니메이션 중 카드 테두리가 잘리지 않도록 여백을 둔다 */
+.collapse {
+  overflow: hidden;
+  margin-inline: -4px;
+  padding-inline: 4px;
+  padding-bottom: 4px;
+}
+
 .org {
   color: var(--color-primary);
   font-size: var(--fs-sm);
@@ -53,10 +95,14 @@
   border-radius: var(--radius-md);
 }
 
+/* 로고가 검은 글자라 다크 모드에서도 보이도록 흰 바탕을 유지한다 */
 .logo {
-  height: 40px;
+  height: 48px;
   width: auto;
   object-fit: contain;
+  padding: var(--space-1) var(--space-2);
+  background-color: #fff;
+  border-radius: var(--radius-sm);
 }
 
 .desc {
@@ -86,16 +132,6 @@
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-
-.highlightItem:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
 }
 
 .hIcon {
@@ -124,9 +160,9 @@
   line-height: var(--lh-base);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .highlights {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-4);
   }
 }
@@ -157,16 +193,6 @@
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-
-.projectItem:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
 }
 
 .pHead {
