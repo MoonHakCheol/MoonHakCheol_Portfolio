@@ -2,6 +2,41 @@
 // description 안의 **텍스트** 는 굵게 강조됩니다.
 export const experience = [
   {
+    period: { ko: '2026.06 ~ 진행 중', en: '2026.06 – present' },
+    title: {
+      ko: '프리랜서 · 페헤개발팀 운영',
+      en: 'Freelancer · Running FeheDeveloperTeam',
+    },
+    org: {
+      ko: '페헤(Fehe) · FeheDeveloperTeam(FDT) 팀장',
+      en: 'Fehe · Team Lead of FeheDeveloperTeam (FDT)',
+    },
+    description: {
+      ko: '**페헤**라는 이름으로 프리랜서 활동을 하며, 디스코드 봇과 웹을 개발하는 **페헤개발팀(FDT)**을 운영하고 있습니다.',
+      en: 'I freelance under the name **Fehe** and run **FeheDeveloperTeam (FDT)**, a team focused on Discord bots and web development.',
+    },
+    link: {
+      href: 'https://www.fehe.dev',
+      label: { ko: '팀 사이트 fehe.dev', en: 'Team site: fehe.dev' },
+    },
+    highlights: [
+      {
+        label: { ko: '제공 서비스', en: 'Services' },
+        desc: {
+          ko: '유튜버·크리에이터를 위한 디스코드 서버 구축, 디스코드 봇 코드 개발, 봇 대시보드와 웹사이트 제작',
+          en: 'Discord server setup for YouTubers and creators, Discord bot development, and bot dashboards and websites',
+        },
+      },
+      {
+        label: { ko: '운영 프로젝트', en: 'Own Project' },
+        desc: {
+          ko: 'AI 채팅, 인증·티켓·로그, 미니게임 기능을 갖춘 디스코드 봇 치유미(Chiyumi) 개발 및 운영',
+          en: 'Built and run Chiyumi, a Discord bot with AI chat, verification, tickets, logging and mini-games',
+        },
+      },
+    ],
+  },
+  {
     period: {
       ko: '2025.03 ~ 2027.01 (진행 중)',
       en: '2025.03 – 2027.01 (ongoing)',

@@ -25,11 +25,13 @@ export const profile = {
       ko:
         '재학 중 국가근로장학생으로 일하는 (주)라함에서 사내 서버 구축과 웹 서비스 개발, ' +
         '업무 자동화를 맡아 현업의 문제를 코드로 풀어 왔습니다. ' +
-        '학교에서는 CarScope와 Jambox의 팀장으로 개발과 협업을 이끌어 왔습니다.',
+        '학교에서는 CarScope와 Jambox의 팀장으로 개발과 협업을 이끌어 왔고, ' +
+        '페헤라는 이름의 프리랜서로 페헤개발팀(FDT)도 운영하고 있습니다.',
       en:
         'While studying, I work as a National Work-Study Scholar at Raham Co., Ltd., ' +
         'where I solve real business problems with in-house servers, web services and automation tools. ' +
-        'At school, I have led development and collaboration as team lead of CarScope and Jambox.',
+        'At school, I have led development and collaboration as team lead of CarScope and Jambox, ' +
+        'and I also freelance as Fehe, running FeheDeveloperTeam (FDT).',
     },
     focus: [
       {

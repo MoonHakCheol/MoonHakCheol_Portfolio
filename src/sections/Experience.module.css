@@ -2,7 +2,7 @@
   position: relative;
 }
 
-/* 스크롤에 따라 채워지는 타임라인 선 */
+/* 스크롤에 따라 아래(과거)에서 위(현재)로 채워지는 타임라인 선 */
 .rail {
   position: absolute;
   top: 0;
@@ -10,7 +10,7 @@
   left: 0;
   width: 2px;
   background-color: var(--color-primary);
-  transform-origin: 50% 0;
+  transform-origin: 50% 100%;
 }
 
 .timeline {
@@ -109,6 +109,21 @@
 .highlight {
   color: var(--color-text);
   font-weight: var(--fw-semibold);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .groupLabel {
